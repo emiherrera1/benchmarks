@@ -1,0 +1,360 @@
+/* Base styles */
+body {
+    max-width: 100%;
+    padding: 10px 15px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    background: rgba(255,254,251,255);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.equity-only {
+    display: none !important;
+}
+
+/* Calculator Toggle */
+.calculator-toggle {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 20px 0;
+    padding: 10px;
+    width: 100%;
+}
+
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    border: 2px solid #000;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 600px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.toggle-option {
+    flex: 1;
+    padding: 12px 24px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    background: transparent;
+    margin: 0;
+    border: none;
+    font-size: 16px;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.toggle-option:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 15%;
+    height: 70%;
+    width: 2px;
+    background-color: #000;
+}
+
+.toggle-option.active {
+    background-color: black;
+    color: white;
+}
+
+.toggle-option:hover:not(.active) {
+    background-color: #f5f5f5;
+}
+
+.heading-3 {
+    font-size: 18px;
+    margin: 15px 0 15px 0;
+    padding: 8px 0;
+    border-bottom: 2px solid #007354;
+}
+
+/* Input groups */
+.input-group {
+    margin-bottom: 3px;
+    display: grid;
+    grid-template-columns: 45% 55%;
+    gap: 10px;
+    align-items: start;
+}
+
+.input-group label {
+    font-weight: bold;
+    grid-column: 1;
+    padding-top: 6px;
+}
+
+.description {
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+    grid-column: 1;
+    margin: 0;
+    margin-bottom: 2px;
+    line-height: 1.3;
+    width: 70%;
+}
+
+.input-group input {
+    grid-column: 2;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: black;
+}
+
+/* Buttons */
+button {
+    padding: 12px 20px;
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px 0;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.update-button {
+    padding: 8px 15px;
+    margin-left: 10px;
+    font-size: 14px;
+    width: auto;
+    display: inline-block;
+}
+
+.remove-row {
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+/* All button hover states */
+button:hover,
+.update-button:hover,
+.remove-row:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Utility classes */
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+input:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+#calculationLoading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+/* Results section */
+.results-section {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.results-section h3 {
+    margin: 8px 0;
+    font-size: 25px;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    table-layout: fixed;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Owned Table Column Widths */
+#ownedTable th:nth-child(1) { width: 20%; }
+#ownedTable th:nth-child(2) { width: 20%; }
+#ownedTable th:nth-child(3) { width: 50%; }
+#ownedTable th:nth-child(4) { width: 10%; }
+
+/* Invested Table Column Widths */
+#investedTable th:nth-child(1) { width: 20%; }
+#investedTable th:nth-child(2) { width: 13%; }
+#investedTable th:nth-child(3) { width: 13%; }
+#investedTable th:nth-child(4) { width: 13%; }
+#investedTable th:nth-child(5) { width: 13%; }
+#investedTable th:nth-child(6) { width: 18%; }
+#investedTable th:nth-child(7) { width: 10%; }
+
+/* Table inputs */
+table input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* CES Calculator specific styles */
+#ces-calculator .results-section {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+#ces-calculator .results-section div {
+    font-size: 20px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+#cesNetRevenue {
+    color: #007354;
+}
+
+#cesScore {
+    color: #000;
+    font-size: 24px !important;
+}
+
+#cesInterpretation {
+    color: #666;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .heading-3 {
+        font-size: 18px;
+    }
+
+    .input-group {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+    
+    .input-group label,
+    .description,
+    .input-group input {
+        grid-column: 1;
+    }
+    
+    .input-group label {
+        padding-top: 0;
+    }
+    
+    .description {
+        width: 100%;
+    }
+
+    .input-group input {
+        font-size: 16px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    td, th {
+        white-space: nowrap;
+        min-width: 100px;
+    }
+
+    button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .results-section button {
+        margin-bottom: 10px;
+    }
+
+    .update-button {
+        padding: 6px 12px;
+        font-size: 12px;
+        width: auto;
+        margin: 5px 0 5px 10px;
+    }
+
+    table input, 
+    table button,
+    td, 
+    th {
+        font-size: 12px;
+        padding: 4px;
+    }
+    
+    .remove-row {
+        padding: 3px 6px;
+    }
+
+    .calculator-toggle {
+        display: flex;
+        align-items: center;
+        margin: 0 0 20px 0;
+        padding: 5px;
+    }
+
+    .toggle-container {
+        width: 100%;
+        border-width: 1px;
+    }
+    
+    .toggle-option {
+        padding: 12px 24px;
+        font-size: 16px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .toggle-option:not(:last-child)::after {
+        width: 1px;
+    }
+}

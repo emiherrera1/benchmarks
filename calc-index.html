@@ -1,0 +1,187 @@
+<html>
+<h2>Creator Holding Company Valuation Calculator</h2>
+
+<div class="calculator-toggle">
+    <div class="toggle-container">
+        <span class="toggle-option active" onclick="switchCalculator('content')">Content-Driven</span>
+        <span class="toggle-option" onclick="switchCalculator('equity')">Equity-Driven</span>
+        <span class="toggle-option" onclick="switchCalculator('investment')">Investment-Driven</span>
+        <span class="toggle-option" onclick="switchCalculator('ces')">CES Calculator</span>
+    </div>
+</div>
+
+<div id="main-calculator">
+    <!-- Category 1: Revenue -->
+    <div class="heading-3">Category 1: Revenue</div>
+
+    <div class="input-group">
+        <label>Revenue This Year ($):</label>
+        <input id="revenueThisYear" oninput="formatNumber(this)" placeholder="Enter revenue" type="text">
+    </div>
+
+    <div class="input-group">
+        <label>Revenue Last Year ($):</label>
+        <input id="revenueLastYear" oninput="formatNumber(this)" placeholder="Enter revenue" type="text">
+    </div>
+
+    <div class="input-group">
+        <label>% of Annual Recurring Revenue (%):</label>
+        <span class="description">Subscription-based revenue</span>
+        <input id="recurringRevenuePercent" oninput="formatNumber(this)" placeholder="Enter percentage" type="text">
+    </div>
+
+    <div class="input-group">
+        <label>Average Contract Value ($):</label>
+        <input id="avgContractValue" oninput="formatNumber(this)" placeholder="Enter contract value" type="text">
+    </div>
+
+    <div class="input-group">
+        <label>Estimated % of Revenue from One-Time Deals (Annual) (%):</label>
+        <input id="oneTimeRevenue" oninput="formatNumber(this); validateRevenueSplit()" placeholder="Enter percentage" type="text">
+    </div>
+
+    <div class="input-group">
+        <label>Estimated % of Revenue from Long-Term Deals (Annual) (%):</label>
+        <input id="longTermRevenue" oninput="formatNumber(this); validateRevenueSplit()" placeholder="Enter percentage" type="text">
+        <span class="error-message" id="revenueSplitError"></span>
+    </div>
+
+    <div class="input-group">
+        <label>Revenue Multiple:</label>
+        <span class="description">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - Channel-Focused: 1x - 3x<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - Licensed IP-Heavy: 3x - 5x<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - Asset/Company-Heavy: 5x - 7x<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - Investment-Heavy: 7x - 10x
+ &nbsp; &nbsp; &nbsp; &nbsp;</span>
+        <input id="revenueMultiple" oninput="formatNumber(this)" placeholder="Enter multiple" type="text">
+    </div>
+
+    <!-- Category 2: Costs & Expenses -->
+    <div class="heading-3">Category 2: Costs &amp; Expenses</div>
+
+    <div class="input-group">
+        <label>Monthly Operating Expenses ($):</label>
+        <span class="description">Salaries &amp; Wages, Contractor Payouts (Including Editors), Office Rent, Software Subscriptions, Insurance, Accounting/Legal Fees, Recurring Travel Expenses</span>
+        <input id="monthlyOperatingExpenses" oninput="formatNumber(this)" placeholder="Enter expenses" type="text">
+    </div>
+
+    <div class="input-group">
+        <label>Monthly Content Production Costs ($):</label>
+        <span class="description">Equipment Rentals, Editing Software, Set Production Upkeep, Studio Costs</span>
+        <input id="monthlyContentCosts" oninput="formatNumber(this)" placeholder="Enter costs" type="text">
+    </div>
+
+    <div class="input-group equity-only">
+        <label>Monthly Marketing &amp; Audience Growth Costs ($):</label>
+        <span class="description">Paid Social Advertising, Paid Collabs (you're paying), Giveaways/Contests, Community Engagement Tools, Content "Boosting"</span>
+        <input id="monthlyMarketingCosts" oninput="formatNumber(this)" placeholder="Enter costs" type="text">
+    </div>
+
+    <div class="input-group">
+        <label>Variable Costs as % of Revenue:</label>
+        <span class="description">What percentage of your revenue goes to costs that increase with sales? (e.g., production costs, commission, transaction fees)</span>
+        <input id="variableCostsPercent" placeholder="Enter percentage" type="number">
+    </div>
+
+    <div class="input-group">
+        <label>Total Liabilities ($):</label>
+        <span class="description">Outstanding Debt/Loans, Outstanding Payments</span>
+        <input id="totalLiabilities" oninput="formatNumber(this)" placeholder="Enter liabilities" type="text">
+    </div>
+
+    <!-- Category 3: Equity Holdings & Investments -->
+    <div class="heading-3">Category 3: Equity Holdings &amp; Investments</div>
+
+    <h4>1. Owned (Majority-Owned Channels &amp; Self-Incubated Companies)</h4>
+    <span class="description">
+&nbsp; &nbsp; &nbsp; &nbsp; Include:<br>
+&nbsp; &nbsp; &nbsp; &nbsp; Channels: How much of your channel's equity &amp; earnings do you own?<br>
+&nbsp; &nbsp; &nbsp; &nbsp; Companies: Companies that you own that are related to your HoldCo business.
+ &nbsp; &nbsp;</span>
+
+    <table id="ownedTable">
+        <tbody><tr>
+            <th>Company/Channel Name</th>
+            <th>% Owned</th>
+            <th>Estimated Valuation ($)</th>
+            <th>Actions</th>
+        </tr>
+    </tbody></table>
+    <button onclick="addOwnedRow()">Add More</button>
+
+    <h4>2. Invested (Angel Investments/Acquisitions)</h4>
+    <span class="description">
+&nbsp; &nbsp; &nbsp; &nbsp; Include:<br>
+&nbsp; &nbsp; &nbsp; &nbsp; Channels: Channels or companies you've bought<br>
+&nbsp; &nbsp; &nbsp; &nbsp; Investments: Angel investments or investments into other companies
+ &nbsp; &nbsp;</span>
+
+    <table id="investedTable">
+        <tbody><tr>
+            <th>Company Name</th>
+            <th>Amount Invested ($)</th>
+            <th>Invested Valuation ($)</th>
+            <th>Current Valuation ($)</th>
+            <th>% Ownership (Auto-Calculated)</th>
+            <th>Value of Shares ($)</th>
+            <th>Actions</th>
+        </tr>
+    </tbody></table>
+    <button onclick="addInvestedRow()">Add More</button>
+
+    <div class="input-group">
+        <label>Total Equity Value ($):</label>
+        <input disabled="" id="totalOwnedEquity" placeholder="Auto-calculated" type="text">
+        <button class="update-button" onclick="updateTotalEquity()">Update</button>
+    </div>
+
+    <!-- Main Valuation Results -->
+    <div class="heading-3">Valuation Results</div>
+    <div class="results-section" id="main-results">
+        <button onclick="calculateValuation()">Calculate Valuation</button>
+        <button onclick="resetCalculator()">Reset Calculator</button>
+        <h3 id="assetValuationResult">Asset-Based Valuation: $0</h3>
+        <h3 id="revenueValuationResult">Revenue Multiple Valuation: $0</h3>
+    </div>
+</div>
+
+<!-- CES Calculator Section -->
+<div id="ces-calculator" style="display: none;">
+    <div class="heading-3">Creator Efficiency Score (CES) Calculator</div>
+    
+    <div class="input-group">
+        <label>This Month's Revenue ($):</label>
+        <span class="description">Total income from all streams</span>
+        <input id="cesCurrentRevenue" oninput="formatNumber(this); calculateCES()" placeholder="Enter current revenue" type="text">
+    </div>
+
+    <div class="input-group">
+        <label>Last Month's Revenue ($):</label>
+        <span class="description">Previous month's total revenue</span>
+        <input id="cesPreviousRevenue" oninput="formatNumber(this); calculateCES()" placeholder="Enter previous revenue" type="text">
+    </div>
+
+    <div class="input-group">
+        <label>Monthly Burn ($):</label>
+        <span class="description">Operating costs (team, tools, rent)</span>
+        <input id="cesMonthlyBurn" oninput="formatNumber(this); calculateCES()" placeholder="Enter monthly burn" type="text">
+    </div>
+
+    <div class="input-group">
+        <label>Monthly Audience Reach:</label>
+        <span class="description">Unique audience across platforms</span>
+        <input id="cesAudienceReach" oninput="formatNumber(this); calculateCES()" placeholder="Enter audience reach" type="text">
+    </div>
+
+    <div class="results-section">
+        <h3>Results</h3>
+        <div id="cesNetRevenue">Net New Revenue: $0</div>
+        <div id="cesScore">CES Score: 0</div>
+        <div id="cesInterpretation">Interpretation: Calculating...</div>
+    </div>
+</div>
+</html>
+<!--<script>
+[Your existing JavaScript code with the updated switchCalculator function]
+</script>-->
