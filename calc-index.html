@@ -1,187 +1,437 @@
-<html>
-<h2>Creator Holding Company Valuation Calculator</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Holding Company Valuation Calculator | value.cvaccelerator.com</title>
+    <meta name="description" content="Calculate your creator holding company's value based on your business model - Investment-Driven, Equity-Driven, or Distribution-Driven. Professional valuation tools for creator entrepreneurs.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Creator Holding Company Valuation</h1>
+            <p class="subtitle">Calculate your holding company's value based on your business model and asset structure</p>
+        </header>
 
-<div class="calculator-toggle">
-    <div class="toggle-container">
-        <span class="toggle-option active" onclick="switchCalculator('content')">Content-Driven</span>
-        <span class="toggle-option" onclick="switchCalculator('equity')">Equity-Driven</span>
-        <span class="toggle-option" onclick="switchCalculator('investment')">Investment-Driven</span>
-        <span class="toggle-option" onclick="switchCalculator('ces')">CES Calculator</span>
+        <div class="business-model-selection">
+            <h2>What type of holding company do you have?</h2>
+            <div class="model-cards">
+                <div class="model-card" id="investment-card" onclick="selectModel('investment')">
+                    <h3>Investment-Driven</h3>
+                    <p>You primarily invest in other creator businesses, startups, or companies</p>
+                    <small>Examples: Angel investments, venture capital, portfolio of creator companies</small>
+                </div>
+                <div class="model-card" id="equity-card" onclick="selectModel('equity')">
+                    <h3>Equity-Driven</h3>
+                    <p>You own majority stakes in multiple companies or channels</p>
+                    <small>Examples: Owned production companies, media channels, brand partnerships</small>
+                </div>
+                <div class="model-card" id="distribution-card" onclick="selectModel('distribution')">
+                    <h3>Distribution-Driven</h3>
+                    <p>You operate multiple content channels across different platforms</p>
+                    <small>Examples: YouTube, TikTok, Instagram, podcast networks, media properties</small>
+                </div>
+            </div>
+        </div>
+
+        <div id="calculator-section" style="display: none;">
+            <div id="investment-calculator" class="calculator-view">
+                <h2>Investment-Driven HoldCo Valuation</h2>
+                <p class="section-subtitle">Value your holding company based on your investment portfolio and returns</p>
+                
+                <div class="input-sections">
+                    <div class="input-section">
+                        <h3>Investment Portfolio</h3>
+                        <div class="input-group">
+                            <label for="totalCapitalDeployed">Total Capital Deployed ($)</label>
+                            <input type="number" id="totalCapitalDeployed" placeholder="Enter total capital invested" oninput="calculateInvestmentValuation()">
+                            <small>Include: All money you've invested across all companies, startups, and creator businesses</small>
+                        </div>
+                        <div class="input-group">
+                            <label for="numberOfInvestments">Number of Investments</label>
+                            <input type="number" id="numberOfInvestments" placeholder="Enter number of investments" oninput="calculateInvestmentValuation()">
+                            <small>Total number of investments made across your portfolio</small>
+                        </div>
+                    </div>
+                    
+                    <div class="input-section">
+                        <h3>Portfolio Performance</h3>
+                        <div class="input-group">
+                            <label for="currentPortfolioValue">Current Portfolio Value ($)</label>
+                            <input type="number" id="currentPortfolioValue" placeholder="Enter current portfolio value" oninput="calculateInvestmentValuation()">
+                            <small>Include: Current valuation of all your investments (use latest valuations)</small>
+                        </div>
+                        <div class="input-group">
+                            <label for="realizedReturns">Realized Returns ($)</label>
+                            <input type="number" id="realizedReturns" placeholder="Enter realized returns" oninput="calculateInvestmentValuation()">
+                            <small>Money received from exits, dividends, or distributions</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="results-section">
+                    <h3>Valuation Results</h3>
+                    <div class="result-item">
+                        <span class="result-label">Portfolio IRR:</span>
+                        <span class="result-value" id="portfolioIRR">0%</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Management Premium:</span>
+                        <span class="result-value" id="managementPremium">0%</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Portfolio-Based Valuation:</span>
+                        <span class="result-value" id="portfolioValuation">$0</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">IRR-Based Valuation:</span>
+                        <span class="result-value" id="irrValuation">$0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="equity-calculator" class="calculator-view" style="display: none;">
+                <h2>Equity-Driven HoldCo Valuation</h2>
+                <p class="section-subtitle">Value your holding company based on your equity holdings and company valuations</p>
+                
+                <div class="input-sections">
+                    <div class="input-section">
+                        <h3>Company Holdings</h3>
+                        <div id="equity-companies">
+                            <div class="company-row">
+                                <div class="input-group">
+                                    <label>Company Name</label>
+                                    <input type="text" placeholder="Enter company name" class="company-name">
+                                </div>
+                                <div class="input-group">
+                                    <label>% Owned</label>
+                                    <input type="number" placeholder="%" class="ownership-percent" oninput="calculateEquityValuation()">
+                                </div>
+                                <div class="input-group">
+                                    <label>Company Valuation ($)</label>
+                                    <input type="number" placeholder="Enter valuation" class="company-valuation" oninput="calculateEquityValuation()">
+                                </div>
+                                <button class="remove-btn" onclick="removeEquityRow(this)">Remove</button>
+                            </div>
+                        </div>
+                        <button class="add-btn" onclick="addEquityRow()">Add Company</button>
+                    </div>
+                    
+                    <div class="input-section">
+                        <h3>Additional Value</h3>
+                        <div class="input-group">
+                            <label for="synergyValue">Synergy Value ($)</label>
+                            <input type="number" id="synergyValue" placeholder="Enter synergy value" oninput="calculateEquityValuation()">
+                            <small>Value created by combining companies</small>
+                        </div>
+                        <div class="input-group">
+                            <label for="brandValue">Brand Value ($)</label>
+                            <input type="number" id="brandValue" placeholder="Enter brand value" oninput="calculateEquityValuation()">
+                            <small>Value of your brand and reputation</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="results-section">
+                    <h3>Valuation Results</h3>
+                    <div class="result-item">
+                        <span class="result-label">Sum of Company Values:</span>
+                        <span class="result-value" id="sumCompanyValues">$0</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Asset-Based Valuation:</span>
+                        <span class="result-value" id="assetBasedValuation">$0</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Revenue-Based Valuation:</span>
+                        <span class="result-value" id="revenueBasedValuation">$0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="distribution-calculator" class="calculator-view" style="display: none;">
+                <h2>Distribution-Driven HoldCo Valuation</h2>
+                <p class="section-subtitle">Value your holding company based on your content channels and audience reach</p>
+                
+                <div class="input-sections">
+                    <div class="input-section">
+                        <h3>Content Channels</h3>
+                        <div id="distribution-channels">
+                            <div class="channel-row">
+                                <div class="input-group">
+                                    <label>Platform</label>
+                                    <input type="text" placeholder="e.g., YouTube, TikTok" class="platform-name">
+                                </div>
+                                <div class="input-group">
+                                    <label>Followers</label>
+                                    <input type="number" placeholder="Follower count" class="followers" oninput="calculateDistributionValuation()">
+                                </div>
+                                <div class="input-group">
+                                    <label>Monthly Views</label>
+                                    <input type="number" placeholder="Monthly views" class="monthly-views" oninput="calculateDistributionValuation()">
+                                </div>
+                                <div class="input-group">
+                                    <label>Monthly Revenue ($)</label>
+                                    <input type="number" placeholder="Monthly revenue" class="monthly-revenue" oninput="calculateDistributionValuation()">
+                                </div>
+                                <button class="remove-btn" onclick="removeDistributionRow(this)">Remove</button>
+                            </div>
+                        </div>
+                        <button class="add-btn" onclick="addDistributionRow()">Add Channel</button>
+                    </div>
+                    
+                    <div class="input-section">
+                        <h3>Revenue Streams</h3>
+                        <div class="input-group">
+                            <label for="monthlyAdRevenue">Monthly Ad Revenue ($)</label>
+                            <input type="number" id="monthlyAdRevenue" placeholder="Enter ad revenue" oninput="calculateDistributionValuation()">
+                        </div>
+                        <div class="input-group">
+                            <label for="monthlySponsorshipRevenue">Monthly Sponsorship Revenue ($)</label>
+                            <input type="number" id="monthlySponsorshipRevenue" placeholder="Enter sponsorship revenue" oninput="calculateDistributionValuation()">
+                        </div>
+                        <div class="input-group">
+                            <label for="monthlySubscriptionRevenue">Monthly Subscription Revenue ($)</label>
+                            <input type="number" id="monthlySubscriptionRevenue" placeholder="Enter subscription revenue" oninput="calculateDistributionValuation()">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="results-section">
+                    <h3>Valuation Results</h3>
+                    <div class="result-item">
+                        <span class="result-label">Total Monthly Revenue:</span>
+                        <span class="result-value" id="totalMonthlyRevenue">$0</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Annual Revenue:</span>
+                        <span class="result-value" id="annualRevenue">$0</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Audience-Based Valuation:</span>
+                        <span class="result-value" id="audienceBasedValuation">$0</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Revenue-Based Valuation:</span>
+                        <span class="result-value" id="distributionRevenueValuation">$0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-primary" onclick="exportResults()">Export Valuation Report</button>
+                <button class="btn-primary" onclick="downloadExcelTemplate()">Download Excel Template</button>
+                <button class="btn-secondary" onclick="resetCalculator()">Reset Calculator</button>
+            </div>
+        </div>
     </div>
-</div>
 
-<div id="main-calculator">
-    <!-- Category 1: Revenue -->
-    <div class="heading-3">Category 1: Revenue</div>
+    <script>
+        let selectedModel = null;
 
-    <div class="input-group">
-        <label>Revenue This Year ($):</label>
-        <input id="revenueThisYear" oninput="formatNumber(this)" placeholder="Enter revenue" type="text">
-    </div>
+        function selectModel(model) {
+            selectedModel = model;
+            
+            // Update card selection
+            document.querySelectorAll('.model-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            document.getElementById(model + '-card').classList.add('selected');
+            
+            // Show calculator section
+            document.getElementById('calculator-section').style.display = 'block';
+            
+            // Show relevant calculator
+            document.querySelectorAll('.calculator-view').forEach(view => {
+                view.style.display = 'none';
+            });
+            document.getElementById(model + '-calculator').style.display = 'block';
+            
+            // Calculate initial values
+            if (model === 'investment') calculateInvestmentValuation();
+            else if (model === 'equity') calculateEquityValuation();
+            else if (model === 'distribution') calculateDistributionValuation();
+        }
 
-    <div class="input-group">
-        <label>Revenue Last Year ($):</label>
-        <input id="revenueLastYear" oninput="formatNumber(this)" placeholder="Enter revenue" type="text">
-    </div>
+        function calculateInvestmentValuation() {
+            const capitalDeployed = parseFloat(document.getElementById('totalCapitalDeployed').value) || 0;
+            const currentValue = parseFloat(document.getElementById('currentPortfolioValue').value) || 0;
+            const realizedReturns = parseFloat(document.getElementById('realizedReturns').value) || 0;
+            
+            // Calculate Portfolio IRR
+            const totalReturns = currentValue + realizedReturns;
+            const portfolioIRR = capitalDeployed > 0 ? ((totalReturns - capitalDeployed) / capitalDeployed) * 100 : 0;
+            
+            // Calculate Management Premium based on IRR
+            let managementPremium = 0;
+            if (portfolioIRR > 30) managementPremium = 15;
+            else if (portfolioIRR > 20) managementPremium = 10;
+            else if (portfolioIRR > 10) managementPremium = 5;
+            
+            // Calculate valuations
+            const portfolioValuation = currentValue * (1 + managementPremium / 100);
+            const irrValuation = capitalDeployed * (1 + portfolioIRR / 100) * 1.2;
+            
+            // Update display
+            document.getElementById('portfolioIRR').textContent = portfolioIRR.toFixed(1) + '%';
+            document.getElementById('managementPremium').textContent = managementPremium + '%';
+            document.getElementById('portfolioValuation').textContent = '$' + formatNumber(portfolioValuation);
+            document.getElementById('irrValuation').textContent = '$' + formatNumber(irrValuation);
+        }
 
-    <div class="input-group">
-        <label>% of Annual Recurring Revenue (%):</label>
-        <span class="description">Subscription-based revenue</span>
-        <input id="recurringRevenuePercent" oninput="formatNumber(this)" placeholder="Enter percentage" type="text">
-    </div>
+        function calculateEquityValuation() {
+            let sumCompanyValues = 0;
+            const companyRows = document.querySelectorAll('#equity-companies .company-row');
+            
+            companyRows.forEach(row => {
+                const ownership = parseFloat(row.querySelector('.ownership-percent').value) || 0;
+                const valuation = parseFloat(row.querySelector('.company-valuation').value) || 0;
+                sumCompanyValues += (ownership / 100) * valuation;
+            });
+            
+            const synergyValue = parseFloat(document.getElementById('synergyValue').value) || 0;
+            const brandValue = parseFloat(document.getElementById('brandValue').value) || 0;
+            
+            const assetBasedValuation = sumCompanyValues + synergyValue + brandValue;
+            
+            // Simple revenue-based calculation (would need revenue inputs)
+            const revenueBasedValuation = assetBasedValuation * 0.8; // Placeholder
+            
+            document.getElementById('sumCompanyValues').textContent = '$' + formatNumber(sumCompanyValues);
+            document.getElementById('assetBasedValuation').textContent = '$' + formatNumber(assetBasedValuation);
+            document.getElementById('revenueBasedValuation').textContent = '$' + formatNumber(revenueBasedValuation);
+        }
 
-    <div class="input-group">
-        <label>Average Contract Value ($):</label>
-        <input id="avgContractValue" oninput="formatNumber(this)" placeholder="Enter contract value" type="text">
-    </div>
+        function calculateDistributionValuation() {
+            let totalFollowers = 0;
+            let totalMonthlyRevenue = 0;
+            
+            const channelRows = document.querySelectorAll('#distribution-channels .channel-row');
+            channelRows.forEach(row => {
+                const followers = parseFloat(row.querySelector('.followers').value) || 0;
+                const revenue = parseFloat(row.querySelector('.monthly-revenue').value) || 0;
+                totalFollowers += followers;
+                totalMonthlyRevenue += revenue;
+            });
+            
+            const adRevenue = parseFloat(document.getElementById('monthlyAdRevenue').value) || 0;
+            const sponsorshipRevenue = parseFloat(document.getElementById('monthlySponsorshipRevenue').value) || 0;
+            const subscriptionRevenue = parseFloat(document.getElementById('monthlySubscriptionRevenue').value) || 0;
+            
+            totalMonthlyRevenue += adRevenue + sponsorshipRevenue + subscriptionRevenue;
+            const annualRevenue = totalMonthlyRevenue * 12;
+            
+            // Calculate valuations
+            const baseAudienceValue = 0.5; // $0.50 per follower
+            const audienceBasedValuation = totalFollowers * baseAudienceValue;
+            
+            // Revenue multiple based on revenue streams
+            const revenueStreams = [adRevenue, sponsorshipRevenue, subscriptionRevenue].filter(r => r > 0).length;
+            const revenueMultiple = revenueStreams >= 3 ? 4 : revenueStreams >= 2 ? 3 : 2;
+            const distributionRevenueValuation = annualRevenue * revenueMultiple;
+            
+            document.getElementById('totalMonthlyRevenue').textContent = '$' + formatNumber(totalMonthlyRevenue);
+            document.getElementById('annualRevenue').textContent = '$' + formatNumber(annualRevenue);
+            document.getElementById('audienceBasedValuation').textContent = '$' + formatNumber(audienceBasedValuation);
+            document.getElementById('distributionRevenueValuation').textContent = '$' + formatNumber(distributionRevenueValuation);
+        }
 
-    <div class="input-group">
-        <label>Estimated % of Revenue from One-Time Deals (Annual) (%):</label>
-        <input id="oneTimeRevenue" oninput="formatNumber(this); validateRevenueSplit()" placeholder="Enter percentage" type="text">
-    </div>
+        function addEquityRow() {
+            const container = document.getElementById('equity-companies');
+            const newRow = document.createElement('div');
+            newRow.className = 'company-row';
+            newRow.innerHTML = `
+                <div class="input-group">
+                    <label>Company Name</label>
+                    <input type="text" placeholder="Enter company name" class="company-name">
+                </div>
+                <div class="input-group">
+                    <label>% Owned</label>
+                    <input type="number" placeholder="%" class="ownership-percent" oninput="calculateEquityValuation()">
+                </div>
+                <div class="input-group">
+                    <label>Company Valuation ($)</label>
+                    <input type="number" placeholder="Enter valuation" class="company-valuation" oninput="calculateEquityValuation()">
+                </div>
+                <button class="remove-btn" onclick="removeEquityRow(this)">Remove</button>
+            `;
+            container.appendChild(newRow);
+        }
 
-    <div class="input-group">
-        <label>Estimated % of Revenue from Long-Term Deals (Annual) (%):</label>
-        <input id="longTermRevenue" oninput="formatNumber(this); validateRevenueSplit()" placeholder="Enter percentage" type="text">
-        <span class="error-message" id="revenueSplitError"></span>
-    </div>
+        function removeEquityRow(button) {
+            button.parentElement.remove();
+            calculateEquityValuation();
+        }
 
-    <div class="input-group">
-        <label>Revenue Multiple:</label>
-        <span class="description">
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - Channel-Focused: 1x - 3x<br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - Licensed IP-Heavy: 3x - 5x<br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - Asset/Company-Heavy: 5x - 7x<br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - Investment-Heavy: 7x - 10x
- &nbsp; &nbsp; &nbsp; &nbsp;</span>
-        <input id="revenueMultiple" oninput="formatNumber(this)" placeholder="Enter multiple" type="text">
-    </div>
+        function addDistributionRow() {
+            const container = document.getElementById('distribution-channels');
+            const newRow = document.createElement('div');
+            newRow.className = 'channel-row';
+            newRow.innerHTML = `
+                <div class="input-group">
+                    <label>Platform</label>
+                    <input type="text" placeholder="e.g., YouTube, TikTok" class="platform-name">
+                </div>
+                <div class="input-group">
+                    <label>Followers</label>
+                    <input type="number" placeholder="Follower count" class="followers" oninput="calculateDistributionValuation()">
+                </div>
+                <div class="input-group">
+                    <label>Monthly Views</label>
+                    <input type="number" placeholder="Monthly views" class="monthly-views" oninput="calculateDistributionValuation()">
+                </div>
+                <div class="input-group">
+                    <label>Monthly Revenue ($)</label>
+                    <input type="number" placeholder="Monthly revenue" class="monthly-revenue" oninput="calculateDistributionValuation()">
+                </div>
+                <button class="remove-btn" onclick="removeDistributionRow(this)">Remove</button>
+            `;
+            container.appendChild(newRow);
+        }
 
-    <!-- Category 2: Costs & Expenses -->
-    <div class="heading-3">Category 2: Costs &amp; Expenses</div>
+        function removeDistributionRow(button) {
+            button.parentElement.remove();
+            calculateDistributionValuation();
+        }
 
-    <div class="input-group">
-        <label>Monthly Operating Expenses ($):</label>
-        <span class="description">Salaries &amp; Wages, Contractor Payouts (Including Editors), Office Rent, Software Subscriptions, Insurance, Accounting/Legal Fees, Recurring Travel Expenses</span>
-        <input id="monthlyOperatingExpenses" oninput="formatNumber(this)" placeholder="Enter expenses" type="text">
-    </div>
+        function formatNumber(num) {
+            return new Intl.NumberFormat('en-US').format(num);
+        }
 
-    <div class="input-group">
-        <label>Monthly Content Production Costs ($):</label>
-        <span class="description">Equipment Rentals, Editing Software, Set Production Upkeep, Studio Costs</span>
-        <input id="monthlyContentCosts" oninput="formatNumber(this)" placeholder="Enter costs" type="text">
-    </div>
+        function exportResults() {
+            // Export functionality would go here
+            alert('Export functionality coming soon!');
+        }
 
-    <div class="input-group equity-only">
-        <label>Monthly Marketing &amp; Audience Growth Costs ($):</label>
-        <span class="description">Paid Social Advertising, Paid Collabs (you're paying), Giveaways/Contests, Community Engagement Tools, Content "Boosting"</span>
-        <input id="monthlyMarketingCosts" oninput="formatNumber(this)" placeholder="Enter costs" type="text">
-    </div>
+        function downloadExcelTemplate() {
+            // Create a link to download the CSV file
+            const link = document.createElement("a");
+            link.href = "excel-templates/holdco-valuation-template.csv";
+            link.download = "holdco-valuation-template.csv";
+            link.click();
+        }
 
-    <div class="input-group">
-        <label>Variable Costs as % of Revenue:</label>
-        <span class="description">What percentage of your revenue goes to costs that increase with sales? (e.g., production costs, commission, transaction fees)</span>
-        <input id="variableCostsPercent" placeholder="Enter percentage" type="number">
-    </div>
-
-    <div class="input-group">
-        <label>Total Liabilities ($):</label>
-        <span class="description">Outstanding Debt/Loans, Outstanding Payments</span>
-        <input id="totalLiabilities" oninput="formatNumber(this)" placeholder="Enter liabilities" type="text">
-    </div>
-
-    <!-- Category 3: Equity Holdings & Investments -->
-    <div class="heading-3">Category 3: Equity Holdings &amp; Investments</div>
-
-    <h4>1. Owned (Majority-Owned Channels &amp; Self-Incubated Companies)</h4>
-    <span class="description">
-&nbsp; &nbsp; &nbsp; &nbsp; Include:<br>
-&nbsp; &nbsp; &nbsp; &nbsp; Channels: How much of your channel's equity &amp; earnings do you own?<br>
-&nbsp; &nbsp; &nbsp; &nbsp; Companies: Companies that you own that are related to your HoldCo business.
- &nbsp; &nbsp;</span>
-
-    <table id="ownedTable">
-        <tbody><tr>
-            <th>Company/Channel Name</th>
-            <th>% Owned</th>
-            <th>Estimated Valuation ($)</th>
-            <th>Actions</th>
-        </tr>
-    </tbody></table>
-    <button onclick="addOwnedRow()">Add More</button>
-
-    <h4>2. Invested (Angel Investments/Acquisitions)</h4>
-    <span class="description">
-&nbsp; &nbsp; &nbsp; &nbsp; Include:<br>
-&nbsp; &nbsp; &nbsp; &nbsp; Channels: Channels or companies you've bought<br>
-&nbsp; &nbsp; &nbsp; &nbsp; Investments: Angel investments or investments into other companies
- &nbsp; &nbsp;</span>
-
-    <table id="investedTable">
-        <tbody><tr>
-            <th>Company Name</th>
-            <th>Amount Invested ($)</th>
-            <th>Invested Valuation ($)</th>
-            <th>Current Valuation ($)</th>
-            <th>% Ownership (Auto-Calculated)</th>
-            <th>Value of Shares ($)</th>
-            <th>Actions</th>
-        </tr>
-    </tbody></table>
-    <button onclick="addInvestedRow()">Add More</button>
-
-    <div class="input-group">
-        <label>Total Equity Value ($):</label>
-        <input disabled="" id="totalOwnedEquity" placeholder="Auto-calculated" type="text">
-        <button class="update-button" onclick="updateTotalEquity()">Update</button>
-    </div>
-
-    <!-- Main Valuation Results -->
-    <div class="heading-3">Valuation Results</div>
-    <div class="results-section" id="main-results">
-        <button onclick="calculateValuation()">Calculate Valuation</button>
-        <button onclick="resetCalculator()">Reset Calculator</button>
-        <h3 id="assetValuationResult">Asset-Based Valuation: $0</h3>
-        <h3 id="revenueValuationResult">Revenue Multiple Valuation: $0</h3>
-    </div>
-</div>
-
-<!-- CES Calculator Section -->
-<div id="ces-calculator" style="display: none;">
-    <div class="heading-3">Creator Efficiency Score (CES) Calculator</div>
-    
-    <div class="input-group">
-        <label>This Month's Revenue ($):</label>
-        <span class="description">Total income from all streams</span>
-        <input id="cesCurrentRevenue" oninput="formatNumber(this); calculateCES()" placeholder="Enter current revenue" type="text">
-    </div>
-
-    <div class="input-group">
-        <label>Last Month's Revenue ($):</label>
-        <span class="description">Previous month's total revenue</span>
-        <input id="cesPreviousRevenue" oninput="formatNumber(this); calculateCES()" placeholder="Enter previous revenue" type="text">
-    </div>
-
-    <div class="input-group">
-        <label>Monthly Burn ($):</label>
-        <span class="description">Operating costs (team, tools, rent)</span>
-        <input id="cesMonthlyBurn" oninput="formatNumber(this); calculateCES()" placeholder="Enter monthly burn" type="text">
-    </div>
-
-    <div class="input-group">
-        <label>Monthly Audience Reach:</label>
-        <span class="description">Unique audience across platforms</span>
-        <input id="cesAudienceReach" oninput="formatNumber(this); calculateCES()" placeholder="Enter audience reach" type="text">
-    </div>
-
-    <div class="results-section">
-        <h3>Results</h3>
-        <div id="cesNetRevenue">Net New Revenue: $0</div>
-        <div id="cesScore">CES Score: 0</div>
-        <div id="cesInterpretation">Interpretation: Calculating...</div>
-    </div>
-</div>
+        function resetCalculator() {
+            // Reset all inputs
+            document.querySelectorAll('input').forEach(input => {
+                input.value = '';
+            });
+            
+            // Reset results
+            document.querySelectorAll('.result-value').forEach(result => {
+                result.textContent = '$0';
+            });
+            
+            // Hide calculator section
+            document.getElementById('calculator-section').style.display = 'none';
+            
+            // Reset model selection
+            document.querySelectorAll('.model-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            selectedModel = null;
+        }
+    </script>
+</body>
 </html>
-<!--<script>
-[Your existing JavaScript code with the updated switchCalculator function]
-</script>-->
