@@ -314,7 +314,7 @@
         <div class="action-buttons">
             <button class="btn-secondary" onclick="resetCalculator()">Reset Calculator</button>
             <button class="btn-primary" onclick="exportResults()">Export CES Report</button>
-        </div>
+            <button class="btn-primary" onclick="downloadExcelTemplate()">Download Excel Template</button>        </div>
     </div>
 
     <script>
@@ -470,7 +470,15 @@
         }
 
         // Export results
-        function exportResults() {
+
+        // Download Excel template
+        function downloadExcelTemplate() {
+            // Create a link to download the CSV file
+            const link = document.createElement("a");
+            link.href = "excel-templates/ces-calculator-template.csv";
+            link.download = "ces-calculator-template.csv";
+            link.click();
+        }        function exportResults() {
             const results = {
                 mode: 'CES',
                 timestamp: new Date().toISOString(),
