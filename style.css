@@ -1,5 +1,38 @@
 /* CES Benchmarks Page Styling */
-* {
+
+/* Site Header and Logo */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+    padding: 15px 20px;
+}
+
+.logo-link {
+    display: inline-block;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.logo-link:hover {
+    opacity: 0.8;
+}
+
+.site-logo {
+    height: 40px;
+    width: 40px;
+    max-width: 40px;
+}
+
+/* Adjust container for fixed header */
+.container {
+    margin-top: 80px;
+}* {
     box-sizing: border-box;
 }
 
