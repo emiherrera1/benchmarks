@@ -62,18 +62,18 @@
         <div class="business-model-selection">
             <h2>What is your PRIMARY business model?</h2>
             <p class="subtitle">Most holding companies have multiple components - start with your dominant model and we'll add the others</p>
-            <div class="model-cards">
-                <div class="model-card" id="investment-card" onclick="selectModel('investment')">
+            <div class="model-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
+                <div class="model-card" id="investment-card" onclick="selectModel('investment')" style="background: rgba(255, 255, 255, 0.05); border: 1px solid #ffffff; border-radius: 12px; padding: 30px; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px);">
                     <h3>Investment-Driven</h3>
                     <p>Your primary focus is investing in other creator businesses, startups, or companies</p>
                     <small>Examples: Angel investments, venture capital, portfolio of creator companies</small>
                 </div>
-                <div class="model-card" id="equity-card" onclick="selectModel('equity')">
+                <div class="model-card" id="equity-card" onclick="selectModel('equity')" style="background: rgba(255, 255, 255, 0.05); border: 1px solid #ffffff; border-radius: 12px; padding: 30px; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px);">
                     <h3>Equity-Driven</h3>
                     <p>Your primary focus is owning majority stakes in multiple companies or channels</p>
                     <small>Examples: Owned production companies, media channels, brand partnerships</small>
                 </div>
-                <div class="model-card" id="distribution-card" onclick="selectModel('distribution')">
+                <div class="model-card" id="distribution-card" onclick="selectModel('distribution')" style="background: rgba(255, 255, 255, 0.05); border: 1px solid #ffffff; border-radius: 12px; padding: 30px; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px);">
                     <h3>Distribution-Driven</h3>
                     <p>Your primary focus is operating multiple content channels across different platforms</p>
                     <small>Examples: YouTube, TikTok, Instagram, podcast networks, media properties</small>
