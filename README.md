@@ -1,51 +1,31 @@
-# Creator Holding Company Valuation Calculator
+# Creator Efficiency Score (CES) Calculator
 
-A comprehensive web-based calculator for valuing creator economy businesses and holding companies.
+A web-based calculator for measuring creator business efficiency and performance.
 
 ## Features
 
-- **Content-Driven Valuation**: Calculate valuations based on content performance and revenue
-- **Equity-Driven Valuation**: Analyze equity holdings and investments
-- **Investment-Driven Valuation**: Evaluate investment portfolios and returns
 - **Creator Efficiency Score (CES)**: Measure creator business efficiency
-
-## Calculator Categories
-
-### Category 1: Revenue
-- Annual revenue tracking
-- Recurring revenue percentage
-- Average contract value
-- Revenue split analysis (one-time vs long-term deals)
-- Revenue multiples
-
-### Category 2: Costs & Expenses
-- Monthly operating expenses
-- Content production costs
-- Marketing and audience growth costs
-- Variable costs as percentage of revenue
-- Total liabilities
-
-### Category 3: Equity Holdings & Investments
-- Owned channels and companies
-- Angel investments and acquisitions
-- Portfolio valuation tracking
-
-## Usage
-
-1. Open `calc-index.html` in your web browser
-2. Select your calculator type (Content-Driven, Equity-Driven, Investment-Driven, or CES)
-3. Fill in the relevant financial data
-4. View your calculated valuations and efficiency scores
+- Revenue tracking and analysis
+- Cost and expense management
+- Audience reach metrics
+- Performance benchmarking
 
 ## Files
 
-- `calc-index.html` - Main calculator interface
+- `index.html` - Main CES calculator interface
+- `index_hybrid.html` - Hybrid version
+- `index_backup.html` - Backup version
 - `style.css` - Styling and layout
-- `README.md` - Project documentation
+- `ces-calculator-template.csv` - Offline template for CES calculations
+- `assets/` - Image assets and resources
+- `docs/` - Documentation and additional resources
 
-## Contributing
+## Usage
 
-Feel free to submit issues and enhancement requests!
+1. Open `index.html` in your web browser
+2. Select the CES calculator option
+3. Fill in your creator business data
+4. View your calculated efficiency score
 
 ## License
 
