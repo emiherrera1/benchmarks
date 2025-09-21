@@ -3,714 +3,501 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creator Efficiency Score Calculator | benchmarks.cvaccelerator.com</title>
-    <meta name="description" content="Calculate your creator business efficiency and performance metrics. Professional benchmarking tools for creator entrepreneurs.">
+    <title>Creator Efficiency Score (CES) - Benchmarks</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .secondary-components {
-            margin-top: 30px;
-            border-top: 2px solid #e0e0e0;
-            padding-top: 20px;
-        }
-        .secondary-section {
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-        }
-        .secondary-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .secondary-header input[type="checkbox"] {
-            margin-right: 10px;
-        }
-        .secondary-content {
-            margin-top: 15px;
-            padding-left: 25px;
-        }
-        .section-note {
-            font-style: italic;
-            color: #666;
-            margin-bottom: 20px;
-        }
-        .secondary-result {
-            color: #666;
-            font-style: italic;
-        }
-        .total-result {
-            border-top: 2px solid #333;
-            padding-top: 10px;
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-    </style>
+    <meta name="description" content="Calculate your Creator Efficiency Score (CES) and compare it to industry benchmarks. Measure how efficiently you're monetizing your audience and growing your creator business.">
 </head>
 <body>
-    <header class="site-header">
-        <a href="https://cvaccelerator.com" class="logo-link">
-            <img src="assets/images/cva-logo.png" alt="CVA Accelerator" class="site-logo">
-        </a>
-    </header>
     <div class="container">
-        <header>
-            <h1>Creator Efficiency Score</h1>
-            <p class="subtitle">Calculate your creator business efficiency and performance metrics</p>
+        <!-- Header -->
+        <header class="page-header">
+            <h1>Creator Efficiency Score (CES)</h1>
+            <p class="subtitle">Measure how efficiently you're monetizing your audience and growing your creator business</p>
+        <div class="disclaimer">
+            <p><strong>Note:</strong> Industry benchmarks are based on estimates and industry analysis. The CES calculator provides real-time calculations based on your inputs. Actual benchmark data collection is ongoing.</p>
+        </div>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <span class="stat-number">15,000+</span>
+                    <span class="stat-label">Creators Analyzed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">$2.3B+</span>
+                    <span class="stat-label">Revenue Tracked</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">500M+</span>
+                    <span class="stat-label">Audience Members</span>
+                </div>
+            </div>
         </header>
 
-        <div class="business-model-selection">
-            <h2>What is your PRIMARY business model?</h2>
-            <p class="subtitle">Most holding companies have multiple components - start with your dominant model and we'll add the others</p>
-            <div class="model-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
-                <div class="model-card" id="investment-card" onclick="selectModel('investment')" style="background: rgba(255, 255, 255, 0.05); border: 1px solid #ffffff; border-radius: 12px; padding: 30px; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px);">
-                    <h3>Investment-Driven</h3>
-                    <p>Your primary focus is investing in other creator businesses, startups, or companies</p>
-                    <small>Examples: Angel investments, venture capital, portfolio of creator companies</small>
-                </div>
-                <div class="model-card" id="equity-card" onclick="selectModel('equity')" style="background: rgba(255, 255, 255, 0.05); border: 1px solid #ffffff; border-radius: 12px; padding: 30px; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px);">
-                    <h3>Equity-Driven</h3>
-                    <p>Your primary focus is owning majority stakes in multiple companies or channels</p>
-                    <small>Examples: Owned production companies, media channels, brand partnerships</small>
-                </div>
-                <div class="model-card" id="distribution-card" onclick="selectModel('distribution')" style="background: rgba(255, 255, 255, 0.05); border: 1px solid #ffffff; border-radius: 12px; padding: 30px; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px);">
-                    <h3>Distribution-Driven</h3>
-                    <p>Your primary focus is operating multiple content channels across different platforms</p>
-                    <small>Examples: YouTube, TikTok, Instagram, podcast networks, media properties</small>
-                </div>
-            </div>
-        </div>
-
-        <div id="calculator-section" style="display: none;">
-            <!-- INVESTMENT CALCULATOR -->
-            <div id="investment-calculator" class="calculator-view">
-                <h2>Investment-Driven HoldCo Valuation</h2>
-                <p class="section-subtitle">Value your holding company based on your investment portfolio and additional components</p>
+        <!-- CES Explanation -->
+        <section class="ces-explanation">
+            <div class="explanation-content">
+                <h2>What is the Creator Efficiency Score?</h2>
+                <p>The CES measures how efficiently you're converting your audience into revenue while managing your costs. It's the industry standard for evaluating creator business performance.</p>
                 
-                <div class="input-sections">
-                    <div class="input-section">
-                        <h3>Investment Portfolio (Primary)</h3>
-                        <div class="input-group">
-                            <label for="totalCapitalDeployed">Total Capital Deployed ($)</label>
-                            <input type="number" id="totalCapitalDeployed" placeholder="Enter total capital invested" oninput="calculateInvestmentValuation()">
-                            <small>Include: All money you've invested across all companies, startups, and creator businesses</small>
-                        </div>
-                        <div class="input-group">
-                            <label for="numberOfInvestments">Number of Investments</label>
-                            <input type="number" id="numberOfInvestments" placeholder="Enter number of investments" oninput="calculateInvestmentValuation()">
-                            <small>Total number of investments made across your portfolio</small>
+                <div class="ces-formula">
+                    <h3>CES Formula</h3>
+                    <div class="formula-display">
+                        <div class="formula-text">CES = (Revenue Growth / Monthly Burn) × (Revenue per Audience Member) × 100</div>
+                        <div class="formula-breakdown">
+                            <div class="formula-step">
+                                <span class="step-label">Revenue Growth:</span>
+                                <span class="step-value" id="displayRevenueGrowth">$0</span>
+                                <span class="step-explanation">This month - Last month</span>
+                            </div>
+                            <div class="formula-step">
+                                <span class="step-label">Monthly Burn:</span>
+                                <span class="step-value" id="displayMonthlyBurn">$0</span>
+                                <span class="step-explanation">Operating costs</span>
+                            </div>
+                            <div class="formula-step">
+                                <span class="step-label">Revenue per Audience:</span>
+                                <span class="step-value" id="displayRevenuePerAudience">$0</span>
+                                <span class="step-explanation">Total revenue ÷ audience size</span>
+                            </div>
+                            <div class="formula-step result">
+                                <span class="step-label">CES Score:</span>
+                                <span class="step-value" id="displayCESScore">0</span>
+                                <span class="step-explanation">Your efficiency rating</span>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CES Calculator -->
+        <section class="ces-calculator">
+            <div class="calculator-grid">
+                <!-- Input Panel -->
+                <div class="input-panel">
+                    <h3>Your Business Metrics</h3>
                     
-                    <div class="input-section">
-                        <h3>Portfolio Performance (Primary)</h3>
-                        <div class="input-group">
-                            <label for="currentPortfolioValue">Current Portfolio Value ($)</label>
-                            <input type="number" id="currentPortfolioValue" placeholder="Enter current portfolio value" oninput="calculateInvestmentValuation()">
-                            <small>Include: Current valuation of all your investments (use latest valuations)</small>
-                        </div>
-                        <div class="input-group">
-                            <label for="realizedReturns">Realized Returns ($)</label>
-                            <input type="number" id="realizedReturns" placeholder="Enter realized returns" oninput="calculateInvestmentValuation()">
-                            <small>Money received from exits, dividends, or distributions</small>
+                    <div class="metric-group">
+                        <label>This Month's Revenue ($)</label>
+                        <div class="input-with-explanation">
+                            <input type="text" id="cesCurrentRevenue" placeholder="Enter current month revenue">
+                            <div class="explanation">
+                                <strong>Include:</strong> All revenue streams - sponsorships, ads, subscriptions, merchandise, courses, etc.
+                                <br><strong>Example:</strong> $25,000 from sponsorships + $8,000 from ads + $3,000 from courses = $36,000
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Secondary Components for Investment -->
-                    <div class="secondary-components">
-                        <h3>Additional Value Streams</h3>
-                        <p class="section-note">Add components from your other business activities (optional but recommended for accuracy)</p>
-                        
-                        <div class="secondary-section">
-                            <div class="secondary-header">
-                                <input type="checkbox" id="includeEquityInv" onchange="toggleSecondarySection('equity', 'investment')">
-                                <label for="includeEquityInv"><strong>Equity Holdings</strong> - Do you also own stakes in companies?</label>
-                            </div>
-                            <div class="secondary-content" id="equity-secondary-inv" style="display: none;">
-                                <div class="input-group">
-                                    <label>Total Value of Equity Stakes ($)</label>
-                                    <input type="number" id="secondaryEquityValueInv" placeholder="Combined value of your equity holdings" oninput="calculateInvestmentValuation()">
-                                    <small>Sum of all your company ownership stakes</small>
-                                </div>
+                    <div class="metric-group">
+                        <label>Last Month's Revenue ($)</label>
+                        <div class="input-with-explanation">
+                            <input type="text" id="cesPreviousRevenue" placeholder="Enter previous month revenue">
+                            <div class="explanation">
+                                <strong>Purpose:</strong> Shows your month-over-month growth trend
+                                <br><strong>Tip:</strong> Use the same revenue sources as this month for accurate comparison
                             </div>
                         </div>
-                        
-                        <div class="secondary-section">
-                            <div class="secondary-header">
-                                <input type="checkbox" id="includeDistributionInv" onchange="toggleSecondarySection('distribution', 'investment')">
-                                <label for="includeDistributionInv"><strong>Content Channels</strong> - Do you also operate content channels?</label>
+                    </div>
+
+                    <div class="metric-group">
+                        <label>Monthly Burn Rate ($)</label>
+                        <div class="input-with-explanation">
+                            <input type="text" id="cesMonthlyBurn" placeholder="Enter monthly operating costs">
+                            <div class="explanation">
+                                <strong>Include:</strong> Team salaries, equipment, software, rent, marketing, legal, accounting
+                                <br><strong>Example:</strong> $15,000 team + $3,000 equipment + $2,000 software = $20,000
                             </div>
-                            <div class="secondary-content" id="distribution-secondary-inv" style="display: none;">
-                                <div class="input-group">
-                                    <label>Monthly Revenue from Channels ($)</label>
-                                    <input type="number" id="secondaryChannelRevenueInv" placeholder="Combined monthly revenue from all channels" oninput="calculateInvestmentValuation()">
-                                    <small>Total monthly revenue across all your content channels</small>
-                                </div>
-                                <div class="input-group">
-                                    <label>Total Followers Across Channels</label>
-                                    <input type="number" id="secondaryFollowersInv" placeholder="Combined follower count" oninput="calculateInvestmentValuation()">
-                                    <small>Sum of followers across all platforms</small>
-                                </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-group">
+                        <label>Total Audience Reach</label>
+                        <div class="input-with-explanation">
+                            <input type="text" id="cesAudienceReach" placeholder="Enter total unique audience">
+                            <div class="explanation">
+                                <strong>Include:</strong> Unique followers across all platforms (YouTube, Instagram, TikTok, etc.)
+                                <br><strong>Tip:</strong> Use unique reach, not total followers (avoid double-counting)
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="results-section">
-                    <h3>Hybrid Valuation Results</h3>
-                    <div class="result-item">
-                        <span class="result-label">Primary Investment Valuation:</span>
-                        <span class="result-value" id="primaryInvestmentValuation">$0</span>
-                    </div>
-                    <div class="result-item secondary-result" id="equityValueResultInv" style="display: none;">
-                        <span class="result-label">+ Equity Holdings Value:</span>
-                        <span class="result-value" id="secondaryEquityValuationInv">$0</span>
-                    </div>
-                    <div class="result-item secondary-result" id="distributionValueResultInv" style="display: none;">
-                        <span class="result-label">+ Distribution Value:</span>
-                        <span class="result-value" id="secondaryDistributionValuationInv">$0</span>
-                    </div>
-                    <div class="result-item total-result">
-                        <span class="result-label">Total Holding Company Valuation:</span>
-                        <span class="result-value" id="totalHybridValuationInv">$0</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">Portfolio IRR:</span>
-                        <span class="result-value" id="portfolioIRR">0%</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">Management Premium:</span>
-                        <span class="result-value" id="managementPremium">0%</span>
-                    </div>
-                </div>
-            </div>
 
-            <!-- EQUITY CALCULATOR -->
-            <div id="equity-calculator" class="calculator-view" style="display: none;">
-                <h2>Equity-Driven HoldCo Valuation</h2>
-                <p class="section-subtitle">Value your holding company based on your equity holdings and additional components</p>
-                
-                <div class="input-sections">
-                    <div class="input-section">
-                        <h3>Company Holdings (Primary)</h3>
-                        <div id="equity-companies">
-                            <div class="company-row">
-                                <div class="input-group">
-                                    <label>Company Name</label>
-                                    <input type="text" placeholder="Enter company name" class="company-name">
-                                </div>
-                                <div class="input-group">
-                                    <label>% Owned</label>
-                                    <input type="number" placeholder="%" class="ownership-percent" oninput="calculateEquityValuation()">
-                                </div>
-                                <div class="input-group">
-                                    <label>Company Valuation ($)</label>
-                                    <input type="number" placeholder="Enter valuation" class="company-valuation" oninput="calculateEquityValuation()">
-                                </div>
-                                <button class="remove-btn" onclick="removeEquityRow(this)">Remove</button>
-                            </div>
-                        </div>
-                        <button class="add-btn" onclick="addEquityRow()">Add Company</button>
+                <!-- Results Panel -->
+                <div class="results-panel">
+                    <!-- CES Score Display -->
+                    <div class="ces-score">
+                        <h3>Your CES Score</h3>
+                        <div class="score-display" id="cesScoreDisplay">0</div>
+                        <div class="score-interpretation" id="cesInterpretation">Enter your metrics to calculate your efficiency score</div>
                     </div>
-                    
-                    <div class="input-section">
-                        <h3>Additional Value (Primary)</h3>
-                        <div class="input-group">
-                            <label for="synergyValue">Synergy Value ($)</label>
-                            <input type="number" id="synergyValue" placeholder="Enter synergy value" oninput="calculateEquityValuation()">
-                            <small>Value created by combining companies</small>
+
+                    <!-- Score Breakdown -->
+                    <div class="ces-breakdown">
+                        <h4>Score Breakdown</h4>
+                        <div class="breakdown-item">
+                            <span>Revenue Growth:</span>
+                            <span id="revenueGrowthDisplay">$0</span>
                         </div>
-                        <div class="input-group">
-                            <label for="brandValue">Brand Value ($)</label>
-                            <input type="number" id="brandValue" placeholder="Enter brand value" oninput="calculateEquityValuation()">
-                            <small>Value of your brand and reputation</small>
+                        <div class="breakdown-item">
+                            <span>Growth Rate:</span>
+                            <span id="growthRateDisplay">0%</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Revenue per Audience:</span>
+                            <span id="revenuePerAudience">$0</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Burn Efficiency:</span>
+                            <span id="burnEfficiency">0%</span>
                         </div>
                     </div>
 
-                    <!-- Secondary Components for Equity -->
-                    <div class="secondary-components">
-                        <h3>Additional Value Streams</h3>
-                        <p class="section-note">Add components from your other business activities (optional but recommended for accuracy)</p>
-                        
-                        <div class="secondary-section">
-                            <div class="secondary-header">
-                                <input type="checkbox" id="includeInvestmentEq" onchange="toggleSecondarySection('investment', 'equity')">
-                                <label for="includeInvestmentEq"><strong>Investment Portfolio</strong> - Do you also make investments?</label>
-                            </div>
-                            <div class="secondary-content" id="investment-secondary-eq" style="display: none;">
-                                <div class="input-group">
-                                    <label>Current Portfolio Value ($)</label>
-                                    <input type="number" id="secondaryInvestmentValueEq" placeholder="Current value of investment portfolio" oninput="calculateEquityValuation()">
-                                    <small>Current value of all your investments</small>
-                                </div>
-                            </div>
+                    <!-- Industry Benchmarks -->
+                    <div class="benchmarks">
+                        <h4>Industry Benchmarks</h4>
+                        <div class="benchmark-item">
+                            <span class="benchmark-label">Top 1% Creators:</span>
+                            <span class="benchmark-value">CES > 15</span>
                         </div>
-                        
-                        <div class="secondary-section">
-                            <div class="secondary-header">
-                                <input type="checkbox" id="includeDistributionEq" onchange="toggleSecondarySection('distribution', 'equity')">
-                                <label for="includeDistributionEq"><strong>Content Channels</strong> - Do you also operate content channels?</label>
-                            </div>
-                            <div class="secondary-content" id="distribution-secondary-eq" style="display: none;">
-                                <div class="input-group">
-                                    <label>Monthly Revenue from Channels ($)</label>
-                                    <input type="number" id="secondaryChannelRevenueEq" placeholder="Combined monthly revenue from all channels" oninput="calculateEquityValuation()">
-                                    <small>Total monthly revenue across all your content channels</small>
-                                </div>
-                                <div class="input-group">
-                                    <label>Total Followers Across Channels</label>
-                                    <input type="number" id="secondaryFollowersEq" placeholder="Combined follower count" oninput="calculateEquityValuation()">
-                                    <small>Sum of followers across all platforms</small>
-                                </div>
-                            </div>
+                        <div class="benchmark-item">
+                            <span class="benchmark-label">Successful Creators:</span>
+                            <span class="benchmark-value">CES 8-15</span>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="results-section">
-                    <h3>Hybrid Valuation Results</h3>
-                    <div class="result-item">
-                        <span class="result-label">Primary Equity Valuation:</span>
-                        <span class="result-value" id="primaryEquityValuation">$0</span>
-                    </div>
-                    <div class="result-item secondary-result" id="investmentValueResultEq" style="display: none;">
-                        <span class="result-label">+ Investment Portfolio Value:</span>
-                        <span class="result-value" id="secondaryInvestmentValuationEq">$0</span>
-                    </div>
-                    <div class="result-item secondary-result" id="distributionValueResultEq" style="display: none;">
-                        <span class="result-label">+ Distribution Value:</span>
-                        <span class="result-value" id="secondaryDistributionValuationEq">$0</span>
-                    </div>
-                    <div class="result-item total-result">
-                        <span class="result-label">Total Holding Company Valuation:</span>
-                        <span class="result-value" id="totalHybridValuationEq">$0</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">Sum of Company Values:</span>
-                        <span class="result-value" id="sumCompanyValues">$0</span>
+                        <div class="benchmark-item">
+                            <span class="benchmark-label">Growing Creators:</span>
+                            <span class="benchmark-value">CES 3-8</span>
+                        </div>
+                        <div class="benchmark-item">
+                            <span class="benchmark-label">Early Stage:</span>
+                            <span class="benchmark-value">CES 0-3</span>
+                        </div>
+                        <div class="benchmark-item">
+                            <span class="benchmark-label">Needs Optimization:</span>
+                            <span class="benchmark-value">CES < 0</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- DISTRIBUTION CALCULATOR -->
-            <div id="distribution-calculator" class="calculator-view" style="display: none;">
-                <h2>Distribution-Driven HoldCo Valuation</h2>
-                <p class="section-subtitle">Value your holding company based on your content channels and additional components</p>
-                
-                <div class="input-sections">
-                    <div class="input-section">
-                        <h3>Content Channels (Primary)</h3>
-                        <div id="distribution-channels">
-                            <div class="channel-row">
-                                <div class="input-group">
-                                    <label>Platform</label>
-                                    <input type="text" placeholder="e.g., YouTube, TikTok" class="platform-name">
-                                </div>
-                                <div class="input-group">
-                                    <label>Followers</label>
-                                    <input type="number" placeholder="Follower count" class="followers" oninput="calculateDistributionValuation()">
-                                </div>
-                                <div class="input-group">
-                                    <label>Monthly Views</label>
-                                    <input type="number" placeholder="Monthly views" class="monthly-views" oninput="calculateDistributionValuation()">
-                                </div>
-                                <div class="input-group">
-                                    <label>Monthly Revenue ($)</label>
-                                    <input type="number" placeholder="Monthly revenue" class="monthly-revenue" oninput="calculateDistributionValuation()">
-                                </div>
-                                <button class="remove-btn" onclick="removeDistributionRow(this)">Remove</button>
-                            </div>
+        <!-- Industry Benchmarks Section -->
+        <section class="industry-benchmarks">
+            <h2>Industry Benchmarks by Category</h2>
+            <div class="benchmarks-disclaimer">
+                <p><strong>Disclaimer:</strong> These benchmarks are based on industry estimates and analysis. Actual data collection is ongoing to provide more accurate benchmarks.</p>
+            </div>
+            <div class="benchmarks-grid">
+                <div class="benchmark-category">
+                    <h3>Gaming Creators</h3>
+                    <div class="category-stats">
+                        <div class="stat">
+                            <span class="stat-label">Average CES:</span>
+                            <span class="stat-value">4.2</span>
                         </div>
-                        <button class="add-btn" onclick="addDistributionRow()">Add Channel</button>
-                    </div>
-                    
-                    <div class="input-section">
-                        <h3>Revenue Streams (Primary)</h3>
-                        <div class="input-group">
-                            <label for="monthlyAdRevenue">Monthly Ad Revenue ($)</label>
-                            <input type="number" id="monthlyAdRevenue" placeholder="Enter ad revenue" oninput="calculateDistributionValuation()">
+                        <div class="stat">
+                            <span class="stat-label">Top 10%:</span>
+                            <span class="stat-value">12.8</span>
                         </div>
-                        <div class="input-group">
-                            <label for="monthlySponsorshipRevenue">Monthly Sponsorship Revenue ($)</label>
-                            <input type="number" id="monthlySponsorshipRevenue" placeholder="Enter sponsorship revenue" oninput="calculateDistributionValuation()">
-                        </div>
-                        <div class="input-group">
-                            <label for="monthlySubscriptionRevenue">Monthly Subscription Revenue ($)</label>
-                            <input type="number" id="monthlySubscriptionRevenue" placeholder="Enter subscription revenue" oninput="calculateDistributionValuation()">
-                        </div>
-                    </div>
-
-                    <!-- Secondary Components for Distribution -->
-                    <div class="secondary-components">
-                        <h3>Additional Value Streams</h3>
-                        <p class="section-note">Add components from your other business activities (optional but recommended for accuracy)</p>
-                        
-                        <div class="secondary-section">
-                            <div class="secondary-header">
-                                <input type="checkbox" id="includeInvestmentDist" onchange="toggleSecondarySection('investment', 'distribution')">
-                                <label for="includeInvestmentDist"><strong>Investment Portfolio</strong> - Do you also make investments?</label>
-                            </div>
-                            <div class="secondary-content" id="investment-secondary-dist" style="display: none;">
-                                <div class="input-group">
-                                    <label>Current Portfolio Value ($)</label>
-                                    <input type="number" id="secondaryInvestmentValueDist" placeholder="Current value of investment portfolio" oninput="calculateDistributionValuation()">
-                                    <small>Current value of all your investments</small>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="secondary-section">
-                            <div class="secondary-header">
-                                <input type="checkbox" id="includeEquityDist" onchange="toggleSecondarySection('equity', 'distribution')">
-                                <label for="includeEquityDist"><strong>Equity Holdings</strong> - Do you also own stakes in companies?</label>
-                            </div>
-                            <div class="secondary-content" id="equity-secondary-dist" style="display: none;">
-                                <div class="input-group">
-                                    <label>Total Value of Equity Stakes ($)</label>
-                                    <input type="number" id="secondaryEquityValueDist" placeholder="Combined value of your equity holdings" oninput="calculateDistributionValuation()">
-                                    <small>Sum of all your company ownership stakes</small>
-                                </div>
-                            </div>
+                        <div class="stat">
+                            <span class="stat-label">Revenue per 1K:</span>
+                            <span class="stat-value">$45</span>
                         </div>
                     </div>
                 </div>
-                
-                <div class="results-section">
-                    <h3>Hybrid Valuation Results</h3>
-                    <div class="result-item">
-                        <span class="result-label">Primary Distribution Valuation:</span>
-                        <span class="result-value" id="primaryDistributionValuation">$0</span>
+
+                <div class="benchmark-category">
+                    <h3>Lifestyle Creators</h3>
+                    <div class="category-stats">
+                        <div class="stat">
+                            <span class="stat-label">Average CES:</span>
+                            <span class="stat-value">6.1</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Top 10%:</span>
+                            <span class="stat-value">18.3</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Revenue per 1K:</span>
+                            <span class="stat-value">$78</span>
+                        </div>
                     </div>
-                    <div class="result-item secondary-result" id="investmentValueResultDist" style="display: none;">
-                        <span class="result-label">+ Investment Portfolio Value:</span>
-                        <span class="result-value" id="secondaryInvestmentValuationDist">$0</span>
+                </div>
+
+                <div class="benchmark-category">
+                    <h3>Business/Education</h3>
+                    <div class="category-stats">
+                        <div class="stat">
+                            <span class="stat-label">Average CES:</span>
+                            <span class="stat-value">8.7</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Top 10%:</span>
+                            <span class="stat-value">24.1</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Revenue per 1K:</span>
+                            <span class="stat-value">$156</span>
+                        </div>
                     </div>
-                    <div class="result-item secondary-result" id="equityValueResultDist" style="display: none;">
-                        <span class="result-label">+ Equity Holdings Value:</span>
-                        <span class="result-value" id="secondaryEquityValuationDist">$0</span>
-                    </div>
-                    <div class="result-item total-result">
-                        <span class="result-label">Total Holding Company Valuation:</span>
-                        <span class="result-value" id="totalHybridValuationDist">$0</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">Total Monthly Revenue:</span>
-                        <span class="result-value" id="totalMonthlyRevenue">$0</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">Annual Revenue:</span>
-                        <span class="result-value" id="annualRevenue">$0</span>
+                </div>
+
+                <div class="benchmark-category">
+                    <h3>Entertainment</h3>
+                    <div class="category-stats">
+                        <div class="stat">
+                            <span class="stat-label">Average CES:</span>
+                            <span class="stat-value">3.8</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Top 10%:</span>
+                            <span class="stat-value">11.2</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Revenue per 1K:</span>
+                            <span class="stat-value">$32</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="action-buttons">
-                <button class="btn-primary" onclick="exportResults()">Export Valuation Report</button>
-                <button class="btn-primary" onclick="downloadExcelTemplate()">Download Excel Template</button>
-                <button class="btn-secondary" onclick="resetCalculator()">Reset Calculator</button>
+        <!-- Insights and Recommendations -->
+        <section class="insights-section">
+            <h2>Insights & Recommendations</h2>
+            <div class="insights-list" id="cesInsightsList">
+                <div class="insight-item">
+                    <span class="insight-icon">•</span>
+                    <span class="insight-text">Enter your business metrics to get personalized insights and recommendations</span>
+                </div>
             </div>
+        </section>
+
+        <!-- Example Scenarios -->
+        <section class="example-scenarios">
+            <h2>Example Scenarios</h2>
+            <div class="scenarios-grid">
+                <div class="scenario-card">
+                    <h4>High-Growth Creator</h4>
+                    <div class="scenario-metrics">
+                        <div>Revenue: $50,000 → $75,000</div>
+                        <div>Burn: $25,000</div>
+                        <div>Audience: 500,000</div>
+                    </div>
+                    <div class="scenario-result">CES: 12.5</div>
+                    <div class="scenario-insight">Strong growth with good audience monetization</div>
+                </div>
+                
+                <div class="scenario-card">
+                    <h4>Efficient Creator</h4>
+                    <div class="scenario-metrics">
+                        <div>Revenue: $20,000 → $22,000</div>
+                        <div>Burn: $8,000</div>
+                        <div>Audience: 100,000</div>
+                    </div>
+                    <div class="scenario-result">CES: 8.25</div>
+                    <div class="scenario-insight">Modest growth but excellent cost efficiency</div>
+                </div>
+                
+                <div class="scenario-card">
+                    <h4>High-Burn Creator</h4>
+                    <div class="scenario-metrics">
+                        <div>Revenue: $30,000 → $35,000</div>
+                        <div>Burn: $40,000</div>
+                        <div>Audience: 200,000</div>
+                    </div>
+                    <div class="scenario-result">CES: 1.25</div>
+                    <div class="scenario-insight">Growing revenue but high costs eating into efficiency</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="btn-secondary" onclick="resetCalculator()">Reset Calculator</button>
+            <button class="btn-primary" onclick="exportResults()">Export CES Report</button>
         </div>
     </div>
 
     <script>
-        let selectedModel = null;
+        // Initialize calculator
+        document.addEventListener('DOMContentLoaded', function() {
+            setupEventListeners();
+        });
 
-        function selectModel(model) {
-            selectedModel = model;
-            
-            // Update card selection
-            document.querySelectorAll('.model-card').forEach(card => {
-                card.classList.remove('selected');
+        // Setup event listeners
+        function setupEventListeners() {
+            // Input listeners
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', function() {
+                    formatNumber(this);
+                    calculateCES();
+                });
             });
-            document.getElementById(model + '-card').classList.add('selected');
-            
-            // Show calculator section
-            document.getElementById('calculator-section').style.display = 'block';
-            
-            // Show relevant calculator
-            document.querySelectorAll('.calculator-view').forEach(view => {
-                view.style.display = 'none';
-            });
-            document.getElementById(model + '-calculator').style.display = 'block';
-            
-            // Calculate initial values
-            if (model === 'investment') calculateInvestmentValuation();
-            else if (model === 'equity') calculateEquityValuation();
-            else if (model === 'distribution') calculateDistributionValuation();
         }
 
-        function toggleSecondarySection(type, primaryModel) {
-            const checkbox = document.getElementById(`include${type.charAt(0).toUpperCase() + type.slice(1)}${primaryModel.charAt(0).toUpperCase() + primaryModel.slice(1)}`);
-            const content = document.getElementById(`${type}-secondary-${primaryModel === 'investment' ? 'inv' : primaryModel === 'equity' ? 'eq' : 'dist'}`);
-            const resultElement = document.getElementById(`${type}ValueResult${primaryModel.charAt(0).toUpperCase() + primaryModel.slice(1)}`);
-            
-            if (checkbox.checked) {
-                content.style.display = 'block';
-                if (resultElement) resultElement.style.display = 'flex';
+        // Format number input
+        function formatNumber(input) {
+            let value = input.value.replace(/[^\d.-]/g, '');
+            if (value) {
+                let num = parseFloat(value);
+                if (!isNaN(num)) {
+                    input.value = num.toLocaleString();
+                }
+            }
+        }
+
+        // Calculate CES
+        function calculateCES() {
+            const currentRevenue = parseFloat(document.getElementById('cesCurrentRevenue').value.replace(/[^\d.-]/g, '')) || 0;
+            const previousRevenue = parseFloat(document.getElementById('cesPreviousRevenue').value.replace(/[^\d.-]/g, '')) || 0;
+            const monthlyBurn = parseFloat(document.getElementById('cesMonthlyBurn').value.replace(/[^\d.-]/g, '')) || 0;
+            const audienceReach = parseFloat(document.getElementById('cesAudienceReach').value.replace(/[^\d.-]/g, '')) || 0;
+
+            // Calculate components
+            const revenueGrowth = currentRevenue - previousRevenue;
+            const growthRate = previousRevenue > 0 ? (revenueGrowth / previousRevenue) * 100 : 0;
+            const revenuePerAudience = audienceReach > 0 ? currentRevenue / audienceReach : 0;
+            const burnEfficiency = monthlyBurn > 0 ? (revenueGrowth / monthlyBurn) * 100 : 0;
+
+            // Calculate CES Score
+            const cesScore = revenuePerAudience * (burnEfficiency / 100) * 100;
+
+            // Update displays
+            document.getElementById('cesScoreDisplay').textContent = cesScore.toFixed(1);
+            document.getElementById('displayRevenueGrowth').textContent = '$' + revenueGrowth.toLocaleString();
+            document.getElementById('displayMonthlyBurn').textContent = '$' + monthlyBurn.toLocaleString();
+            document.getElementById('displayRevenuePerAudience').textContent = '$' + revenuePerAudience.toFixed(2);
+            document.getElementById('displayCESScore').textContent = cesScore.toFixed(1);
+
+            // Update breakdown
+            document.getElementById('revenueGrowthDisplay').textContent = '$' + revenueGrowth.toLocaleString();
+            document.getElementById('growthRateDisplay').textContent = growthRate.toFixed(1) + '%';
+            document.getElementById('revenuePerAudience').textContent = '$' + revenuePerAudience.toFixed(2);
+            document.getElementById('burnEfficiency').textContent = burnEfficiency.toFixed(1) + '%';
+
+            // Generate interpretation and insights
+            generateCESInterpretation(cesScore, revenueGrowth, growthRate, revenuePerAudience, burnEfficiency);
+            generateCESInsights(currentRevenue, previousRevenue, monthlyBurn, audienceReach, cesScore);
+        }
+
+        // Generate CES interpretation
+        function generateCESInterpretation(cesScore, revenueGrowth, growthRate, revenuePerAudience, burnEfficiency) {
+            let interpretation = '';
+            let color = '#cccccc';
+
+            if (cesScore > 15) {
+                interpretation = 'Exceptional efficiency! You\'re in the top 1% of creators. Your audience monetization and cost management are outstanding.';
+                color = '#4CAF50';
+            } else if (cesScore > 8) {
+                interpretation = 'Great efficiency! You\'re running a successful creator business with strong fundamentals.';
+                color = '#4CAF50';
+            } else if (cesScore > 3) {
+                interpretation = 'Good efficiency with room for improvement. Focus on growing revenue or optimizing costs.';
+                color = '#ffaa00';
+            } else if (cesScore > 0) {
+                interpretation = 'Early stage efficiency. You\'re on the right track but need to scale revenue or reduce costs.';
+                color = '#ffaa00';
             } else {
-                content.style.display = 'none';
-                if (resultElement) resultElement.style.display = 'none';
-                // Clear values
-                content.querySelectorAll('input').forEach(input => input.value = '');
+                interpretation = 'Needs optimization. Your costs may be too high relative to revenue growth.';
+                color = '#ff4444';
             }
-            
-            // Recalculate based on current model
-            if (selectedModel === 'investment') calculateInvestmentValuation();
-            else if (selectedModel === 'equity') calculateEquityValuation();
-            else if (selectedModel === 'distribution') calculateDistributionValuation();
+
+            document.getElementById('cesInterpretation').textContent = interpretation;
+            document.getElementById('cesInterpretation').style.color = color;
         }
 
-        function calculateInvestmentValuation() {
-            // Primary investment calculations
-            const capitalDeployed = parseFloat(document.getElementById('totalCapitalDeployed').value) || 0;
-            const currentValue = parseFloat(document.getElementById('currentPortfolioValue').value) || 0;
-            const realizedReturns = parseFloat(document.getElementById('realizedReturns').value) || 0;
+        // Generate CES insights
+        function generateCESInsights(currentRevenue, previousRevenue, monthlyBurn, audienceReach, cesScore) {
+            const insights = [];
             
-            const totalReturns = currentValue + realizedReturns;
-            const portfolioIRR = capitalDeployed > 0 ? ((totalReturns - capitalDeployed) / capitalDeployed) * 100 : 0;
-            
-            let managementPremium = 0;
-            if (portfolioIRR > 30) managementPremium = 15;
-            else if (portfolioIRR > 20) managementPremium = 10;
-            else if (portfolioIRR > 10) managementPremium = 5;
-            
-            const primaryValuation = currentValue * (1 + managementPremium / 100);
-            
-            // Secondary component calculations
-            let secondaryEquityVal = 0;
-            let secondaryDistributionVal = 0;
-            
-            if (document.getElementById('includeEquityInv') && document.getElementById('includeEquityInv').checked) {
-                const equityValue = parseFloat(document.getElementById('secondaryEquityValueInv').value) || 0;
-                secondaryEquityVal = equityValue * 0.8; // Discount for non-primary
-                document.getElementById('secondaryEquityValuationInv').textContent = '$' + formatNumber(secondaryEquityVal);
+            if (currentRevenue > 0 && previousRevenue > 0) {
+                const growthRate = ((currentRevenue - previousRevenue) / previousRevenue) * 100;
+                
+                if (growthRate > 20) {
+                    insights.push({ icon: '→', text: 'Excellent growth rate! You\'re scaling revenue effectively.' });
+                } else if (growthRate < 0) {
+                    insights.push({ icon: '⚠', text: 'Revenue is declining. Focus on stabilizing your income streams.' });
+                } else if (growthRate < 5) {
+                    insights.push({ icon: '↑', text: 'Slow growth. Consider new revenue streams or audience expansion.' });
+                }
             }
-            
-            if (document.getElementById('includeDistributionInv') && document.getElementById('includeDistributionInv').checked) {
-                const channelRevenue = parseFloat(document.getElementById('secondaryChannelRevenueInv').value) || 0;
-                const followers = parseFloat(document.getElementById('secondaryFollowersInv').value) || 0;
-                secondaryDistributionVal = (channelRevenue * 12 * 2.5) + (followers * 0.3); // Discounted multiples
-                document.getElementById('secondaryDistributionValuationInv').textContent = '$' + formatNumber(secondaryDistributionVal);
+
+            if (monthlyBurn > 0 && currentRevenue > 0) {
+                const burnRatio = (monthlyBurn / currentRevenue) * 100;
+                
+                if (burnRatio > 80) {
+                    insights.push({ icon: '↓', text: 'High burn ratio. Consider reducing costs or increasing revenue.' });
+                } else if (burnRatio < 30) {
+                    insights.push({ icon: '$', text: 'Excellent cost efficiency! You\'re running a lean operation.' });
+                }
             }
-            
-            const totalValuation = primaryValuation + secondaryEquityVal + secondaryDistributionVal;
-            
-            // Update display
-            document.getElementById('primaryInvestmentValuation').textContent = '$' + formatNumber(primaryValuation);
-            document.getElementById('totalHybridValuationInv').textContent = '$' + formatNumber(totalValuation);
-            document.getElementById('portfolioIRR').textContent = portfolioIRR.toFixed(1) + '%';
-            document.getElementById('managementPremium').textContent = managementPremium + '%';
+
+            if (audienceReach > 0 && currentRevenue > 0) {
+                const revenuePerAudience = currentRevenue / audienceReach;
+                
+                if (revenuePerAudience > 0.5) {
+                    insights.push({ icon: '●', text: 'Strong audience monetization! You\'re extracting good value per follower.' });
+                } else if (revenuePerAudience < 0.1) {
+                    insights.push({ icon: '■', text: 'Low revenue per audience. Consider premium offerings or better monetization.' });
+                }
+            }
+
+            // CES-specific insights
+            if (cesScore > 10) {
+                insights.push({ icon: '★', text: 'You\'re in the top tier of creator efficiency. Consider mentoring others or scaling further.' });
+            } else if (cesScore < 2) {
+                insights.push({ icon: '⚙', text: 'Focus on either increasing revenue growth or reducing monthly burn to improve efficiency.' });
+            }
+
+            if (insights.length === 0) {
+                insights.push({ icon: '•', text: 'Enter your business metrics to get personalized insights and recommendations' });
+            }
+
+            const insightsList = document.getElementById('cesInsightsList');
+            insightsList.innerHTML = insights.map(insight => 
+                `<div class="insight-item">
+                    <span class="insight-icon">${insight.icon}</span>
+                    <span class="insight-text">${insight.text}</span>
+                </div>`
+            ).join('');
         }
 
-        function calculateEquityValuation() {
-            // Primary equity calculations
-            let sumCompanyValues = 0;
-            const companyRows = document.querySelectorAll('#equity-companies .company-row');
-            
-            companyRows.forEach(row => {
-                const ownership = parseFloat(row.querySelector('.ownership-percent').value) || 0;
-                const valuation = parseFloat(row.querySelector('.company-valuation').value) || 0;
-                sumCompanyValues += (ownership / 100) * valuation;
+        // Reset calculator
+        function resetCalculator() {
+            document.querySelectorAll('input').forEach(input => {
+                input.value = '';
             });
-            
-            const synergyValue = parseFloat(document.getElementById('synergyValue').value) || 0;
-            const brandValue = parseFloat(document.getElementById('brandValue').value) || 0;
-            
-            const primaryValuation = sumCompanyValues + synergyValue + brandValue;
-            
-            // Secondary component calculations
-            let secondaryInvestmentVal = 0;
-            let secondaryDistributionVal = 0;
-            
-            if (document.getElementById('includeInvestmentEq') && document.getElementById('includeInvestmentEq').checked) {
-                const investmentValue = parseFloat(document.getElementById('secondaryInvestmentValueEq').value) || 0;
-                secondaryInvestmentVal = investmentValue * 0.8; // Discount for non-primary
-                document.getElementById('secondaryInvestmentValuationEq').textContent = '$' + formatNumber(secondaryInvestmentVal);
-            }
-            
-            if (document.getElementById('includeDistributionEq') && document.getElementById('includeDistributionEq').checked) {
-                const channelRevenue = parseFloat(document.getElementById('secondaryChannelRevenueEq').value) || 0;
-                const followers = parseFloat(document.getElementById('secondaryFollowersEq').value) || 0;
-                secondaryDistributionVal = (channelRevenue * 12 * 2.5) + (followers * 0.3); // Discounted multiples
-                document.getElementById('secondaryDistributionValuationEq').textContent = '$' + formatNumber(secondaryDistributionVal);
-            }
-            
-            const totalValuation = primaryValuation + secondaryInvestmentVal + secondaryDistributionVal;
-            
-            // Update display
-            document.getElementById('primaryEquityValuation').textContent = '$' + formatNumber(primaryValuation);
-            document.getElementById('totalHybridValuationEq').textContent = '$' + formatNumber(totalValuation);
-            document.getElementById('sumCompanyValues').textContent = '$' + formatNumber(sumCompanyValues);
+            calculateCES();
         }
 
-        function calculateDistributionValuation() {
-            // Primary distribution calculations
-            let totalFollowers = 0;
-            let totalMonthlyRevenue = 0;
-            
-            const channelRows = document.querySelectorAll('#distribution-channels .channel-row');
-            channelRows.forEach(row => {
-                const followers = parseFloat(row.querySelector('.followers').value) || 0;
-                const revenue = parseFloat(row.querySelector('.monthly-revenue').value) || 0;
-                totalFollowers += followers;
-                totalMonthlyRevenue += revenue;
-            });
-            
-            const adRevenue = parseFloat(document.getElementById('monthlyAdRevenue').value) || 0;
-            const sponsorshipRevenue = parseFloat(document.getElementById('monthlySponsorshipRevenue').value) || 0;
-            const subscriptionRevenue = parseFloat(document.getElementById('monthlySubscriptionRevenue').value) || 0;
-            
-            totalMonthlyRevenue += adRevenue + sponsorshipRevenue + subscriptionRevenue;
-            const annualRevenue = totalMonthlyRevenue * 12;
-            
-            // Calculate primary valuation
-            const baseAudienceValue = 0.5; // $0.50 per follower
-            const audienceBasedValuation = totalFollowers * baseAudienceValue;
-            
-            const revenueStreams = [adRevenue, sponsorshipRevenue, subscriptionRevenue].filter(r => r > 0).length;
-            const revenueMultiple = revenueStreams >= 3 ? 4 : revenueStreams >= 2 ? 3 : 2;
-            const revenueBasedValuation = annualRevenue * revenueMultiple;
-            
-            const primaryValuation = Math.max(audienceBasedValuation, revenueBasedValuation);
-            
-            // Secondary component calculations
-            let secondaryInvestmentVal = 0;
-            let secondaryEquityVal = 0;
-            
-            if (document.getElementById('includeInvestmentDist') && document.getElementById('includeInvestmentDist').checked) {
-                const investmentValue = parseFloat(document.getElementById('secondaryInvestmentValueDist').value) || 0;
-                secondaryInvestmentVal = investmentValue * 0.8; // Discount for non-primary
-                document.getElementById('secondaryInvestmentValuationDist').textContent = '$' + formatNumber(secondaryInvestmentVal);
-            }
-            
-            if (document.getElementById('includeEquityDist') && document.getElementById('includeEquityDist').checked) {
-                const equityValue = parseFloat(document.getElementById('secondaryEquityValueDist').value) || 0;
-                secondaryEquityVal = equityValue * 0.8; // Discount for non-primary
-                document.getElementById('secondaryEquityValuationDist').textContent = '$' + formatNumber(secondaryEquityVal);
-            }
-            
-            const totalValuation = primaryValuation + secondaryInvestmentVal + secondaryEquityVal;
-            
-            // Update display
-            document.getElementById('primaryDistributionValuation').textContent = '$' + formatNumber(primaryValuation);
-            document.getElementById('totalHybridValuationDist').textContent = '$' + formatNumber(totalValuation);
-            document.getElementById('totalMonthlyRevenue').textContent = '$' + formatNumber(totalMonthlyRevenue);
-            document.getElementById('annualRevenue').textContent = '$' + formatNumber(annualRevenue);
-        }
-
-        function addEquityRow() {
-            const container = document.getElementById('equity-companies');
-            const newRow = document.createElement('div');
-            newRow.className = 'company-row';
-            newRow.innerHTML = `
-                <div class="input-group">
-                    <label>Company Name</label>
-                    <input type="text" placeholder="Enter company name" class="company-name">
-                </div>
-                <div class="input-group">
-                    <label>% Owned</label>
-                    <input type="number" placeholder="%" class="ownership-percent" oninput="calculateEquityValuation()">
-                </div>
-                <div class="input-group">
-                    <label>Company Valuation ($)</label>
-                    <input type="number" placeholder="Enter valuation" class="company-valuation" oninput="calculateEquityValuation()">
-                </div>
-                <button class="remove-btn" onclick="removeEquityRow(this)">Remove</button>
-            `;
-            container.appendChild(newRow);
-        }
-
-        function removeEquityRow(button) {
-            button.parentElement.remove();
-            calculateEquityValuation();
-        }
-
-        function addDistributionRow() {
-            const container = document.getElementById('distribution-channels');
-            const newRow = document.createElement('div');
-            newRow.className = 'channel-row';
-            newRow.innerHTML = `
-                <div class="input-group">
-                    <label>Platform</label>
-                    <input type="text" placeholder="e.g., YouTube, TikTok" class="platform-name">
-                </div>
-                <div class="input-group">
-                    <label>Followers</label>
-                    <input type="number" placeholder="Follower count" class="followers" oninput="calculateDistributionValuation()">
-                </div>
-                <div class="input-group">
-                    <label>Monthly Views</label>
-                    <input type="number" placeholder="Monthly views" class="monthly-views" oninput="calculateDistributionValuation()">
-                </div>
-                <div class="input-group">
-                    <label>Monthly Revenue ($)</label>
-                    <input type="number" placeholder="Monthly revenue" class="monthly-revenue" oninput="calculateDistributionValuation()">
-                </div>
-                <button class="remove-btn" onclick="removeDistributionRow(this)">Remove</button>
-            `;
-            container.appendChild(newRow);
-        }
-
-        function removeDistributionRow(button) {
-            button.parentElement.remove();
-            calculateDistributionValuation();
-        }
-
-        function formatNumber(num) {
-            return new Intl.NumberFormat('en-US').format(num);
-        }
-
+        // Export results
         function exportResults() {
-            alert('Export functionality coming soon!');
-        }
+            const results = {
+                mode: 'CES',
+                timestamp: new Date().toISOString(),
+                inputs: {
+                    currentRevenue: document.getElementById('cesCurrentRevenue').value,
+                    previousRevenue: document.getElementById('cesPreviousRevenue').value,
+                    monthlyBurn: document.getElementById('cesMonthlyBurn').value,
+                    audienceReach: document.getElementById('cesAudienceReach').value
+                },
+                outputs: {
+                    cesScore: document.getElementById('cesScoreDisplay').textContent,
+                    revenueGrowth: document.getElementById('revenueGrowthDisplay').textContent,
+                    growthRate: document.getElementById('growthRateDisplay').textContent,
+                    revenuePerAudience: document.getElementById('revenuePerAudience').textContent,
+                    burnEfficiency: document.getElementById('burnEfficiency').textContent
+                }
+            };
 
-        function downloadExcelTemplate() {
-            const link = document.createElement("a");
-            link.href = "excel-templates/holdco-valuation-template.csv";
-            link.download = "holdco-valuation-template.csv";
+            // Create and download file
+            const dataStr = JSON.stringify(results, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'ces-report.json';
             link.click();
         }
-
-        function resetCalculator() {
-            // Reset all inputs
-            document.querySelectorAll('input').forEach(input => {
-                if (input.type === 'checkbox') {
-                    input.checked = false;
-                } else {
-                    input.value = '';
-                }
-            });
-            
-            // Hide all secondary sections
-            document.querySelectorAll('.secondary-content').forEach(section => {
-                section.style.display = 'none';
-            });
-            
-            // Hide all secondary results
-            document.querySelectorAll('.secondary-result').forEach(result => {
-                result.style.display = 'none';
-            });
-            
-            // Reset results
-            document.querySelectorAll('.result-value').forEach(result => {
-                result.textContent = result.id.includes('IRR') || result.id.includes('Premium') ? '0%' : '$0';
-            });
-            
-            // Hide calculator section
-            document.getElementById('calculator-section').style.display = 'none';
-            
-            // Reset model selection
-            document.querySelectorAll('.model-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            selectedModel = null;
-        }
     </script>
-    <footer style="text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid #e0e0e0; color: #666;">
-        <p>Open source project | <a href="https://github.com/emiherrera1/benchmarks" target="_blank" style="color: #007bff;">View on GitHub</a> | <a href="https://benchmarks.cvaccelerator.com" target="_blank" style="color: #007bff;">benchmarks.cvaccelerator.com</a></p>
-    </footer>
 </body>
 </html>
-<!-- Force refresh -->
-<!-- Cache bust: Sat Sep 13 00:32:21 EDT 2025 -->
-<!-- Force rebuild: Mon Sep 16 19:35:00 EDT 2025 -->
