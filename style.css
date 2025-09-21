@@ -1025,3 +1025,41 @@ input:focus {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
+
+/* Professional Text Colors - Replace White with Grey */
+.hero-subtitle,
+.section-subtitle,
+.stat-label,
+.benchmark-card p,
+.recommendation-card p,
+.score-description,
+.indicator-text,
+.metric-label,
+.input-group small {
+    color: #B0B0B0 !important; /* Light grey instead of white */
+}
+
+/* Main headings stay white for contrast */
+.hero h2,
+.calculator-header h3,
+.benchmarks-section h3,
+.recommendations-section h3,
+.input-section h4,
+.results-section h4,
+.benchmark-card h4,
+.recommendation-card h4 {
+    color: #FFFFFF !important; /* Keep white for main headings */
+}
+
+/* Secondary text in grey */
+.label-text,
+.formula-label,
+.indicator-label {
+    color: #808080 !important; /* Medium grey */
+}
+
+/* Muted text in darker grey */
+.formula-text,
+.benchmark-score {
+    color: #666666 !important; /* Darker grey */
+}
