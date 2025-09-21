@@ -1063,3 +1063,124 @@ input:focus {
 .benchmark-score {
     color: #666666 !important; /* Darker grey */
 }
+
+/* Professional Color Override - Black, Grey, White, Green Only */
+:root {
+    --primary-color: #00C851;        /* Professional Green */
+    --primary-dark: #00A041;         /* Darker Green */
+    --primary-light: #4CD964;        /* Light Green */
+    --text-primary: #FFFFFF;         /* Pure White */
+    --text-secondary: #B0B0B0;       /* Light Grey */
+    --text-muted: #808080;           /* Medium Grey */
+    --text-dark: #333333;            /* Dark Grey */
+    --bg-primary: #000000;           /* Pure Black */
+    --bg-secondary: #1A1A1A;         /* Dark Grey */
+    --bg-tertiary: #2A2A2A;          /* Medium Dark Grey */
+    --bg-card: #1E1E1E;              /* Card Background */
+    --border-color: #404040;         /* Border Grey */
+    --border-light: #2A2A2A;         /* Light Border */
+}
+
+/* Override all colorful elements */
+.score-circle.excellent,
+.indicator-fill.excellent,
+.range-fill.business,
+.range-fill.gaming {
+    background: var(--primary-color) !important;
+    color: var(--bg-primary) !important;
+}
+
+.score-circle.good,
+.indicator-fill.good {
+    background: var(--primary-light) !important;
+    color: var(--bg-primary) !important;
+}
+
+.score-circle.average,
+.indicator-fill.average,
+.range-fill.entertainment {
+    background: var(--text-secondary) !important;
+    color: var(--bg-primary) !important;
+}
+
+.score-circle.poor,
+.indicator-fill.poor,
+.range-fill.lifestyle {
+    background: var(--text-muted) !important;
+    color: var(--bg-primary) !important;
+}
+
+/* Remove all blue, orange, red, purple colors */
+.calculate-btn,
+.export-btn,
+.action-btn {
+    background: var(--primary-color) !important;
+    color: var(--bg-primary) !important;
+    border: none !important;
+}
+
+.calculate-btn:hover,
+.export-btn:hover,
+.action-btn:hover {
+    background: var(--primary-dark) !important;
+}
+
+.clear-btn {
+    background: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.clear-btn:hover {
+    background: var(--border-color) !important;
+}
+
+/* Remove all gradients and use solid colors */
+* {
+    background-image: none !important;
+}
+
+/* Override any remaining colorful elements */
+.priority-badge.high {
+    background: var(--primary-color) !important;
+    color: var(--bg-primary) !important;
+}
+
+.priority-badge.medium {
+    background: var(--text-secondary) !important;
+    color: var(--bg-primary) !important;
+}
+
+.priority-badge.low {
+    background: var(--text-muted) !important;
+    color: var(--bg-primary) !important;
+}
+
+/* Ensure all backgrounds are black/grey */
+body {
+    background: var(--bg-primary) !important;
+}
+
+.site-header,
+.calculator-section,
+.benchmarks-section,
+.recommendations-section {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.input-section,
+.results-section,
+.stat-card,
+.benchmark-card,
+.recommendation-card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.ces-score-display,
+.performance-indicator,
+.metric-item {
+    background: var(--bg-primary) !important;
+    border: 1px solid var(--border-color) !important;
+}
