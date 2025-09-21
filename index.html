@@ -6,6 +6,7 @@
     <title>Creator Efficiency Score (CES) Calculator | benchmarks.cvaccelerator.com</title>
     <meta name="description" content="Calculate your Creator Efficiency Score (CES) and compare it to industry benchmarks. Measure how efficiently you're monetizing your audience and growing your creator business.">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -15,6 +16,9 @@
                 <img src="assets/images/cva-logo.png" alt="CVA Accelerator" class="site-logo">
             </a>
             <h1>Creator Efficiency Score (CES)</h1>
+            <div class="header-actions">
+                <button class="export-btn" onclick="exportResults()">📊 Export</button>
+            </div>
         </div>
     </header>
 
@@ -22,19 +26,23 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
+                <div class="hero-badge">✨ Industry Standard</div>
                 <h2>Measure Your Creator Business Efficiency</h2>
-                <p class="hero-subtitle">Calculate your CES and compare it to industry benchmarks to optimize your creator business performance.</p>
+                <p class="hero-subtitle">Calculate your CES and compare it to industry benchmarks to optimize your creator business performance and maximize revenue potential.</p>
                 
                 <div class="stats-grid">
-                    <div class="stat-card">
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-icon">👥</div>
                         <div class="stat-number">15,000+</div>
                         <div class="stat-label">Creators Analyzed</div>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-icon">💰</div>
                         <div class="stat-number">$2.3B+</div>
                         <div class="stat-label">Revenue Tracked</div>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-icon">📈</div>
                         <div class="stat-number">500M+</div>
                         <div class="stat-label">Audience Members</div>
                     </div>
@@ -47,67 +55,127 @@
             <div class="calculator-container">
                 <div class="calculator-header">
                     <h3>CES Calculator</h3>
-                    <p class="formula-display">CES = (Revenue Growth / Monthly Burn) × (Revenue per Audience) × 100</p>
+                    <div class="formula-display">
+                        <span class="formula-label">Formula:</span>
+                        <span class="formula-text">CES = (Revenue Growth / Monthly Burn) × (Revenue per Audience) × 100</span>
+                    </div>
                 </div>
 
                 <div class="calculator-grid">
                     <!-- Input Section -->
                     <div class="input-section">
-                        <h4>Your Business Metrics</h4>
+                        <h4>📊 Your Business Metrics</h4>
                         
                         <div class="input-group">
-                            <label for="currentRevenue">This Month's Revenue ($)</label>
-                            <input type="number" id="currentRevenue" placeholder="Enter current month revenue">
+                            <label for="currentRevenue">
+                                <span class="label-text">This Month's Revenue ($)</span>
+                                <span class="label-required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">$</span>
+                                <input type="number" id="currentRevenue" placeholder="0" min="0" step="0.01">
+                            </div>
                             <small>Include: All revenue streams - sponsorships, ads, subscriptions, merchandise, courses, etc.</small>
                         </div>
 
                         <div class="input-group">
-                            <label for="lastRevenue">Last Month's Revenue ($)</label>
-                            <input type="number" id="lastRevenue" placeholder="Enter previous month revenue">
+                            <label for="lastRevenue">
+                                <span class="label-text">Last Month's Revenue ($)</span>
+                                <span class="label-required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">$</span>
+                                <input type="number" id="lastRevenue" placeholder="0" min="0" step="0.01">
+                            </div>
                             <small>Shows your month-over-month growth trend</small>
                         </div>
 
                         <div class="input-group">
-                            <label for="monthlyBurn">Monthly Burn Rate ($)</label>
-                            <input type="number" id="monthlyBurn" placeholder="Enter monthly operating costs">
+                            <label for="monthlyBurn">
+                                <span class="label-text">Monthly Burn Rate ($)</span>
+                                <span class="label-required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">$</span>
+                                <input type="number" id="monthlyBurn" placeholder="0" min="0" step="0.01">
+                            </div>
                             <small>Team, equipment, tools, marketing, and other operational expenses</small>
                         </div>
 
                         <div class="input-group">
-                            <label for="audienceSize">Total Audience Reach</label>
-                            <input type="number" id="audienceSize" placeholder="Enter total followers across all platforms">
+                            <label for="audienceSize">
+                                <span class="label-text">Total Audience Reach</span>
+                                <span class="label-required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="number" id="audienceSize" placeholder="0" min="0">
+                            </div>
                             <small>Unique followers across all your content platforms</small>
+                        </div>
+
+                        <div class="input-actions">
+                            <button class="calculate-btn" onclick="calculateCES()">
+                                <span class="btn-icon">🧮</span>
+                                Calculate CES
+                            </button>
+                            <button class="clear-btn" onclick="clearInputs()">
+                                <span class="btn-icon">🗑️</span>
+                                Clear All
+                            </button>
                         </div>
                     </div>
 
                     <!-- Results Section -->
                     <div class="results-section">
-                        <h4>Your CES Results</h4>
+                        <h4>📈 Your CES Results</h4>
                         
                         <div class="ces-score-display">
-                            <div class="score-circle">
+                            <div class="score-circle" id="scoreCircle">
                                 <div class="score-number" id="cesScore">0</div>
                                 <div class="score-label">CES Score</div>
+                            </div>
+                            <div class="score-description" id="scoreDescription">
+                                Enter your metrics to calculate your CES
                             </div>
                         </div>
 
                         <div class="metrics-breakdown">
                             <div class="metric-item">
-                                <span class="metric-label">Revenue Growth:</span>
-                                <span class="metric-value" id="revenueGrowth">$0</span>
+                                <div class="metric-icon">📊</div>
+                                <div class="metric-content">
+                                    <span class="metric-label">Revenue Growth</span>
+                                    <span class="metric-value" id="revenueGrowth">$0</span>
+                                </div>
                             </div>
                             <div class="metric-item">
-                                <span class="metric-label">Growth Rate:</span>
-                                <span class="metric-value" id="growthRate">0%</span>
+                                <div class="metric-icon">📈</div>
+                                <div class="metric-content">
+                                    <span class="metric-label">Growth Rate</span>
+                                    <span class="metric-value" id="growthRate">0%</span>
+                                </div>
                             </div>
                             <div class="metric-item">
-                                <span class="metric-label">Revenue per Audience:</span>
-                                <span class="metric-value" id="revenuePerAudience">$0</span>
+                                <div class="metric-icon">👥</div>
+                                <div class="metric-content">
+                                    <span class="metric-label">Revenue per Audience</span>
+                                    <span class="metric-value" id="revenuePerAudience">$0</span>
+                                </div>
                             </div>
                             <div class="metric-item">
-                                <span class="metric-label">Burn Efficiency:</span>
-                                <span class="metric-value" id="burnEfficiency">0%</span>
+                                <div class="metric-icon">⚡</div>
+                                <div class="metric-content">
+                                    <span class="metric-label">Burn Efficiency</span>
+                                    <span class="metric-value" id="burnEfficiency">0%</span>
+                                </div>
                             </div>
+                        </div>
+
+                        <div class="performance-indicator">
+                            <div class="indicator-label">Performance Level</div>
+                            <div class="indicator-bar">
+                                <div class="indicator-fill" id="indicatorFill"></div>
+                            </div>
+                            <div class="indicator-text" id="indicatorText">Enter data to see performance</div>
                         </div>
                     </div>
                 </div>
@@ -116,58 +184,136 @@
 
         <!-- Industry Benchmarks -->
         <section class="benchmarks-section">
-            <h3>Industry Benchmarks</h3>
+            <h3>🏆 Industry Benchmarks</h3>
+            <p class="section-subtitle">Compare your performance against industry standards</p>
+            
             <div class="benchmark-categories">
-                <div class="benchmark-card">
-                    <h4>Gaming Creators</h4>
+                <div class="benchmark-card" data-category="gaming">
+                    <div class="benchmark-header">
+                        <div class="benchmark-icon">🎮</div>
+                        <h4>Gaming Creators</h4>
+                    </div>
                     <div class="benchmark-score">CES: 45-65</div>
-                    <p>High engagement, diverse revenue streams</p>
+                    <div class="benchmark-range">
+                        <div class="range-bar">
+                            <div class="range-fill gaming"></div>
+                        </div>
+                    </div>
+                    <p>High engagement, diverse revenue streams, strong community monetization</p>
                 </div>
-                <div class="benchmark-card">
-                    <h4>Lifestyle Creators</h4>
+                
+                <div class="benchmark-card" data-category="lifestyle">
+                    <div class="benchmark-header">
+                        <div class="benchmark-icon">✨</div>
+                        <h4>Lifestyle Creators</h4>
+                    </div>
                     <div class="benchmark-score">CES: 35-55</div>
-                    <p>Brand partnerships, affiliate marketing</p>
+                    <div class="benchmark-range">
+                        <div class="range-bar">
+                            <div class="range-fill lifestyle"></div>
+                        </div>
+                    </div>
+                    <p>Brand partnerships, affiliate marketing, product collaborations</p>
                 </div>
-                <div class="benchmark-card">
-                    <h4>Business/Education</h4>
+                
+                <div class="benchmark-card" data-category="business">
+                    <div class="benchmark-header">
+                        <div class="benchmark-icon">💼</div>
+                        <h4>Business/Education</h4>
+                    </div>
                     <div class="benchmark-score">CES: 55-75</div>
-                    <p>Courses, consulting, premium content</p>
+                    <div class="benchmark-range">
+                        <div class="range-bar">
+                            <div class="range-fill business"></div>
+                        </div>
+                    </div>
+                    <p>Courses, consulting, premium content, high-value offerings</p>
                 </div>
-                <div class="benchmark-card">
-                    <h4>Entertainment</h4>
+                
+                <div class="benchmark-card" data-category="entertainment">
+                    <div class="benchmark-header">
+                        <div class="benchmark-icon">🎭</div>
+                        <h4>Entertainment</h4>
+                    </div>
                     <div class="benchmark-score">CES: 40-60</div>
-                    <p>Ad revenue, sponsorships, merchandise</p>
+                    <div class="benchmark-range">
+                        <div class="range-bar">
+                            <div class="range-fill entertainment"></div>
+                        </div>
+                    </div>
+                    <p>Ad revenue, sponsorships, merchandise, live performances</p>
                 </div>
             </div>
         </section>
 
         <!-- Recommendations -->
         <section class="recommendations-section">
-            <h3>Optimization Recommendations</h3>
+            <h3>💡 Optimization Recommendations</h3>
+            <p class="section-subtitle">Actionable insights to improve your CES score</p>
+            
             <div class="recommendations-grid" id="recommendations">
-                <div class="recommendation-card">
-                    <h4>📈 Increase Revenue Growth</h4>
-                    <p>Focus on diversifying revenue streams and increasing month-over-month growth</p>
+                <div class="recommendation-card" data-priority="high">
+                    <div class="recommendation-header">
+                        <div class="priority-badge high">High Priority</div>
+                        <div class="recommendation-icon">📈</div>
+                    </div>
+                    <h4>Increase Revenue Growth</h4>
+                    <p>Focus on diversifying revenue streams and increasing month-over-month growth through strategic partnerships and content optimization.</p>
+                    <div class="recommendation-actions">
+                        <button class="action-btn">Learn More</button>
+                    </div>
                 </div>
-                <div class="recommendation-card">
-                    <h4>💰 Optimize Burn Rate</h4>
-                    <p>Review operational costs and ensure efficient spending on growth initiatives</p>
+                
+                <div class="recommendation-card" data-priority="medium">
+                    <div class="recommendation-header">
+                        <div class="priority-badge medium">Medium Priority</div>
+                        <div class="recommendation-icon">💰</div>
+                    </div>
+                    <h4>Optimize Burn Rate</h4>
+                    <p>Review operational costs and ensure efficient spending on growth initiatives. Track ROI on all investments.</p>
+                    <div class="recommendation-actions">
+                        <button class="action-btn">Learn More</button>
+                    </div>
                 </div>
-                <div class="recommendation-card">
-                    <h4>👥 Maximize Audience Value</h4>
-                    <p>Improve monetization per audience member through better engagement strategies</p>
+                
+                <div class="recommendation-card" data-priority="low">
+                    <div class="recommendation-header">
+                        <div class="priority-badge low">Low Priority</div>
+                        <div class="recommendation-icon">👥</div>
+                    </div>
+                    <h4>Maximize Audience Value</h4>
+                    <p>Improve monetization per audience member through better engagement strategies and personalized content.</p>
+                    <div class="recommendation-actions">
+                        <button class="action-btn">Learn More</button>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <p>&copy; 2025 CVA Accelerator. All rights reserved.</p>
+                <p>CES Calculator - Industry Standard for Creator Business Performance</p>
+            </div>
+        </footer>
     </div>
 
     <script>
-        // CES Calculator JavaScript
+        // Enhanced CES Calculator JavaScript
+        let currentCES = 0;
+        
         function calculateCES() {
             const currentRevenue = parseFloat(document.getElementById('currentRevenue').value) || 0;
             const lastRevenue = parseFloat(document.getElementById('lastRevenue').value) || 0;
             const monthlyBurn = parseFloat(document.getElementById('monthlyBurn').value) || 0;
             const audienceSize = parseFloat(document.getElementById('audienceSize').value) || 0;
+
+            // Validate inputs
+            if (currentRevenue === 0 && lastRevenue === 0 && monthlyBurn === 0 && audienceSize === 0) {
+                showNotification('Please enter at least one metric to calculate your CES', 'warning');
+                return;
+            }
 
             // Calculate metrics
             const revenueGrowth = currentRevenue - lastRevenue;
@@ -176,33 +322,201 @@
             const burnEfficiency = monthlyBurn > 0 ? ((revenueGrowth / monthlyBurn) * 100) : 0;
             
             // Calculate CES Score
-            const cesScore = Math.round(revenuePerAudience * (burnEfficiency / 100) * 100);
+            currentCES = Math.round(revenuePerAudience * (burnEfficiency / 100) * 100);
 
-            // Update display
-            document.getElementById('cesScore').textContent = cesScore;
-            document.getElementById('revenueGrowth').textContent = '$' + revenueGrowth.toLocaleString();
-            document.getElementById('growthRate').textContent = growthRate.toFixed(1) + '%';
-            document.getElementById('revenuePerAudience').textContent = '$' + revenuePerAudience.toFixed(2);
-            document.getElementById('burnEfficiency').textContent = burnEfficiency.toFixed(1) + '%';
+            // Update display with animations
+            animateValue('cesScore', 0, currentCES, 1000);
+            animateValue('revenueGrowth', 0, revenueGrowth, 800);
+            animateValue('growthRate', 0, growthRate, 800);
+            animateValue('revenuePerAudience', 0, revenuePerAudience, 800);
+            animateValue('burnEfficiency', 0, burnEfficiency, 800);
 
-            // Update score circle color based on performance
-            const scoreCircle = document.querySelector('.score-circle');
-            if (cesScore >= 60) {
-                scoreCircle.className = 'score-circle excellent';
-            } else if (cesScore >= 40) {
-                scoreCircle.className = 'score-circle good';
-            } else if (cesScore >= 20) {
-                scoreCircle.className = 'score-circle average';
+            // Update score circle and description
+            updateScoreDisplay(currentCES);
+            updatePerformanceIndicator(currentCES);
+            updateRecommendations(currentCES);
+
+            // Show success notification
+            showNotification('CES calculated successfully!', 'success');
+        }
+
+        function animateValue(elementId, start, end, duration) {
+            const element = document.getElementById(elementId);
+            const startTime = performance.now();
+            
+            function updateValue(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = start + (end - start) * easeOutCubic(progress);
+                
+                if (elementId === 'cesScore') {
+                    element.textContent = Math.round(current);
+                } else if (elementId === 'revenueGrowth') {
+                    element.textContent = '$' + current.toLocaleString();
+                } else if (elementId === 'growthRate' || elementId === 'burnEfficiency') {
+                    element.textContent = current.toFixed(1) + '%';
+                } else if (elementId === 'revenuePerAudience') {
+                    element.textContent = '$' + current.toFixed(2);
+                }
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateValue);
+                }
+            }
+            
+            requestAnimationFrame(updateValue);
+        }
+
+        function easeOutCubic(t) {
+            return 1 - Math.pow(1 - t, 3);
+        }
+
+        function updateScoreDisplay(score) {
+            const scoreCircle = document.getElementById('scoreCircle');
+            const scoreDescription = document.getElementById('scoreDescription');
+            
+            // Remove existing classes
+            scoreCircle.className = 'score-circle';
+            
+            if (score >= 70) {
+                scoreCircle.classList.add('excellent');
+                scoreDescription.textContent = 'Outstanding performance! You\'re in the top tier of creators.';
+            } else if (score >= 50) {
+                scoreCircle.classList.add('good');
+                scoreDescription.textContent = 'Strong performance! You\'re above industry average.';
+            } else if (score >= 30) {
+                scoreCircle.classList.add('average');
+                scoreDescription.textContent = 'Good foundation! There\'s room for optimization.';
+            } else if (score > 0) {
+                scoreCircle.classList.add('poor');
+                scoreDescription.textContent = 'Early stage! Focus on growth and efficiency.';
             } else {
-                scoreCircle.className = 'score-circle poor';
+                scoreDescription.textContent = 'Enter your metrics to calculate your CES';
             }
         }
 
-        // Add event listeners
+        function updatePerformanceIndicator(score) {
+            const indicatorFill = document.getElementById('indicatorFill');
+            const indicatorText = document.getElementById('indicatorText');
+            
+            const percentage = Math.min(score / 100, 1) * 100;
+            indicatorFill.style.width = percentage + '%';
+            
+            if (score >= 70) {
+                indicatorText.textContent = 'Excellent Performance';
+                indicatorFill.className = 'indicator-fill excellent';
+            } else if (score >= 50) {
+                indicatorText.textContent = 'Good Performance';
+                indicatorFill.className = 'indicator-fill good';
+            } else if (score >= 30) {
+                indicatorText.textContent = 'Average Performance';
+                indicatorFill.className = 'indicator-fill average';
+            } else if (score > 0) {
+                indicatorText.textContent = 'Needs Improvement';
+                indicatorFill.className = 'indicator-fill poor';
+            } else {
+                indicatorText.textContent = 'Enter data to see performance';
+                indicatorFill.style.width = '0%';
+            }
+        }
+
+        function updateRecommendations(score) {
+            // This would typically fetch personalized recommendations based on the score
+            // For now, we'll show a success message
+            console.log('Recommendations updated for score:', score);
+        }
+
+        function clearInputs() {
+            document.getElementById('currentRevenue').value = '';
+            document.getElementById('lastRevenue').value = '';
+            document.getElementById('monthlyBurn').value = '';
+            document.getElementById('audienceSize').value = '';
+            
+            // Reset display
+            document.getElementById('cesScore').textContent = '0';
+            document.getElementById('revenueGrowth').textContent = '$0';
+            document.getElementById('growthRate').textContent = '0%';
+            document.getElementById('revenuePerAudience').textContent = '$0';
+            document.getElementById('burnEfficiency').textContent = '0%';
+            
+            // Reset score circle
+            const scoreCircle = document.getElementById('scoreCircle');
+            scoreCircle.className = 'score-circle';
+            
+            // Reset performance indicator
+            const indicatorFill = document.getElementById('indicatorFill');
+            indicatorFill.style.width = '0%';
+            indicatorFill.className = 'indicator-fill';
+            
+            document.getElementById('indicatorText').textContent = 'Enter data to see performance';
+            document.getElementById('scoreDescription').textContent = 'Enter your metrics to calculate your CES';
+            
+            showNotification('All inputs cleared', 'info');
+        }
+
+        function exportResults() {
+            if (currentCES === 0) {
+                showNotification('Please calculate your CES first', 'warning');
+                return;
+            }
+            
+            const data = {
+                cesScore: currentCES,
+                timestamp: new Date().toISOString(),
+                metrics: {
+                    currentRevenue: document.getElementById('currentRevenue').value,
+                    lastRevenue: document.getElementById('lastRevenue').value,
+                    monthlyBurn: document.getElementById('monthlyBurn').value,
+                    audienceSize: document.getElementById('audienceSize').value
+                }
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `ces-report-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showNotification('CES report exported successfully!', 'success');
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Add event listeners for real-time calculation
         document.getElementById('currentRevenue').addEventListener('input', calculateCES);
         document.getElementById('lastRevenue').addEventListener('input', calculateCES);
         document.getElementById('monthlyBurn').addEventListener('input', calculateCES);
         document.getElementById('audienceSize').addEventListener('input', calculateCES);
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                calculateCES();
+            }
+            if (e.ctrlKey && e.key === 'r') {
+                e.preventDefault();
+                clearInputs();
+            }
+        });
     </script>
 </body>
 </html>
