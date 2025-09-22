@@ -1184,3 +1184,42 @@ body {
     background: var(--bg-primary) !important;
     border: 1px solid var(--border-color) !important;
 }
+
+/* Remove Grey Backgrounds - Make Content Areas Black */
+.calculator-section,
+.benchmarks-section,
+.recommendations-section {
+    background: #000000 !important; /* Pure black */
+    border: none !important;
+}
+
+.calculator-container {
+    background: #000000 !important; /* Pure black */
+    border: none !important;
+}
+
+.input-section,
+.results-section {
+    background: #000000 !important; /* Pure black */
+    border: 1px solid #404040 !important; /* Keep subtle grey border */
+}
+
+.stat-card,
+.benchmark-card,
+.recommendation-card {
+    background: #000000 !important; /* Pure black */
+    border: 1px solid #404040 !important; /* Keep subtle grey border */
+}
+
+.ces-score-display,
+.performance-indicator,
+.metric-item {
+    background: #000000 !important; /* Pure black */
+    border: 1px solid #404040 !important; /* Keep subtle grey border */
+}
+
+/* Keep only the header with grey background */
+.site-header {
+    background: #1A1A1A !important; /* Keep header grey */
+    border-bottom: 1px solid #404040 !important;
+}
