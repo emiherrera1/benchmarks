@@ -1223,3 +1223,37 @@ body {
     background: #1A1A1A !important; /* Keep header grey */
     border-bottom: 1px solid #404040 !important;
 }
+
+/* Fix Stat Card Display */
+.stat-number {
+    display: block !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
+    margin-bottom: 0.5rem !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.stat-label {
+    display: block !important;
+    color: #B0B0B0 !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.stat-icon {
+    display: none !important; /* Hide empty icon divs */
+}
+
+.stat-card {
+    text-align: center !important;
+    padding: 2rem !important;
+    min-height: 120px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
