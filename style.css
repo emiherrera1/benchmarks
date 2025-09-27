@@ -2070,3 +2070,117 @@ body {
         font-size: 0.65rem !important;
     }
 }
+
+/* Make Header Even More Compact - CES Calculator More Visible on Load */
+.hero {
+    padding: 1.5rem 0 1rem !important; /* Much smaller padding */
+    min-height: auto !important;
+}
+
+.hero h2 {
+    font-size: 1.75rem !important; /* Smaller title */
+    margin-bottom: 0.5rem !important;
+    line-height: 1.2 !important;
+}
+
+.hero-subtitle {
+    font-size: 0.9rem !important; /* Smaller subtitle */
+    margin-bottom: 0.75rem !important;
+    max-width: 500px !important;
+    line-height: 1.4 !important;
+}
+
+.stats-grid {
+    margin: 0.75rem 0 !important; /* Minimal margin */
+    gap: 0.75rem !important;
+}
+
+.stat-card {
+    width: 180px !important; /* Slightly smaller */
+    height: 70px !important; /* Slightly shorter */
+    padding: 0.75rem 0.5rem !important; /* Less padding */
+}
+
+.stat-card .stat-number {
+    font-size: 1.25rem !important; /* Smaller numbers */
+    margin: 0 0 0.2rem 0 !important;
+}
+
+.stat-card .stat-label {
+    font-size: 0.65rem !important; /* Smaller labels */
+}
+
+/* Make calculator section start higher */
+.calculator-section {
+    margin: 1rem 0 !important; /* Minimal margin */
+    padding: 2rem !important;
+}
+
+.calculator-header {
+    margin-bottom: 1rem !important; /* Less space */
+    padding-bottom: 0.75rem !important;
+}
+
+.calculator-header h3 {
+    font-size: 1.5rem !important; /* Smaller calculator title */
+    margin-bottom: 0.5rem !important;
+}
+
+.formula-display {
+    padding: 1rem 1.5rem !important; /* Smaller formula box */
+    font-size: 0.9rem !important;
+}
+
+/* Reduce overall page spacing */
+.container {
+    padding: 0 1rem !important;
+}
+
+/* Make everything more compact */
+.site-header {
+    padding: 1rem 0 !important;
+}
+
+.header-content h1 {
+    font-size: 1.5rem !important;
+}
+
+/* Mobile optimizations for even more compact view */
+@media (max-width: 768px) {
+    .hero {
+        padding: 1rem 0 0.75rem !important;
+    }
+    
+    .hero h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.85rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .stats-grid {
+        margin: 0.5rem 0 !important;
+        gap: 0.5rem !important;
+    }
+    
+    .stat-card {
+        width: 160px !important;
+        height: 60px !important;
+        padding: 0.5rem 0.25rem !important;
+    }
+    
+    .stat-card .stat-number {
+        font-size: 1.1rem !important;
+    }
+    
+    .stat-card .stat-label {
+        font-size: 0.6rem !important;
+    }
+    
+    .calculator-section {
+        margin: 0.75rem 0 !important;
+        padding: 1.5rem !important;
+    }
+}
