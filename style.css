@@ -2312,3 +2312,66 @@ input[type="number"]:focus {
     animation: none !important;
     transform: none !important;
 }
+
+/* COMPLETELY DISABLE ALL ANIMATIONS AND TRANSITIONS */
+* {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* Override any existing animation rules */
+.stat-card,
+.stat-number,
+.stat-label,
+.input-wrapper,
+.input-wrapper input,
+.calculate-btn,
+.clear-btn,
+.export-btn,
+.metric-item,
+.score-circle,
+.indicator-fill,
+.benchmark-card,
+.recommendation-card {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* Remove hover effects that might cause shaking */
+.stat-card:hover,
+.input-wrapper input:hover,
+.input-wrapper input:focus,
+.calculate-btn:hover,
+.clear-btn:hover,
+.export-btn:hover,
+.metric-item:hover,
+.benchmark-card:hover,
+.recommendation-card:hover {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* Disable any CSS animations */
+@keyframes fadeInUp {
+    animation: none !important;
+}
+
+.fade-in-up {
+    animation: none !important;
+}
+
+/* Force static positioning */
+.stat-card {
+    position: static !important;
+}
+
+/* Remove any backdrop filters that might cause issues */
+.stat-card,
+.input-section,
+.results-section,
+.calculator-section {
+    backdrop-filter: none !important;
+}
