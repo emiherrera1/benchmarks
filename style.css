@@ -1880,3 +1880,81 @@ body {
     font-size: 2rem !important;
     margin-bottom: 1rem !important;
 }
+
+/* Force Compact Header and Fix Stat Numbers */
+.hero {
+    padding: 2rem 0 2.5rem !important;
+    min-height: auto !important;
+}
+
+.hero h2 {
+    font-size: 2rem !important;
+    margin-bottom: 0.75rem !important;
+    line-height: 1.2 !important;
+}
+
+.hero-subtitle {
+    font-size: 1rem !important;
+    margin-bottom: 1.5rem !important;
+    max-width: 600px !important;
+}
+
+.stats-grid {
+    margin: 1.5rem 0 !important;
+    gap: 1rem !important;
+}
+
+.stat-card {
+    padding: 1.5rem 1rem !important;
+    min-height: 80px !important;
+    max-height: 80px !important;
+}
+
+/* Force stat numbers to be visible */
+.stat-card .stat-number {
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
+    margin-bottom: 0.25rem !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    line-height: 1 !important;
+    text-align: center !important;
+}
+
+.stat-card .stat-label {
+    font-size: 0.75rem !important;
+    color: #808080 !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    text-align: center !important;
+    margin: 0 !important;
+}
+
+/* Remove any conflicting styles */
+.stat-card * {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Make calculator section more compact */
+.calculator-section {
+    margin: 1.5rem 0 !important;
+    padding: 2rem !important;
+}
+
+.calculator-header {
+    margin-bottom: 1.5rem !important;
+    padding-bottom: 1rem !important;
+}
+
+.calculator-header h3 {
+    font-size: 1.75rem !important;
+    margin-bottom: 0.75rem !important;
+}
