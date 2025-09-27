@@ -1257,3 +1257,46 @@ body {
     justify-content: center !important;
     align-items: center !important;
 }
+
+/* Fix Button Colors - Remove Orange and Other Colors */
+.clear-btn {
+    background: #404040 !important; /* Grey instead of orange */
+    color: #FFFFFF !important;
+    border: 1px solid #404040 !important;
+}
+
+.clear-btn:hover {
+    background: #666666 !important; /* Lighter grey on hover */
+}
+
+/* Ensure all buttons use only black, grey, white, green */
+button:not(.calculate-btn):not(.export-btn):not(.action-btn) {
+    background: #404040 !important; /* Grey for secondary buttons */
+    color: #FFFFFF !important;
+    border: 1px solid #404040 !important;
+}
+
+button:not(.calculate-btn):not(.export-btn):not(.action-btn):hover {
+    background: #666666 !important; /* Lighter grey on hover */
+}
+
+/* Override any remaining colorful buttons */
+.priority-badge.medium {
+    background: #666666 !important; /* Grey instead of orange */
+    color: #FFFFFF !important;
+}
+
+/* Remove any orange/red colors from score states */
+.score-circle.average,
+.indicator-fill.average {
+    background: #666666 !important; /* Grey instead of orange */
+    color: #FFFFFF !important;
+}
+
+/* Ensure all interactive elements use only the approved colors */
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #00C851 !important; /* Green focus */
+    box-shadow: 0 0 0 2px rgba(0, 200, 81, 0.1) !important;
+}
