@@ -502,11 +502,10 @@
         }
 
         // Add event listeners for real-time calculation
-        document.getElementById('currentRevenue').addEventListener("input", function() { calculateCES(false); }));
-        document.getElementById('lastRevenue').addEventListener("input", function() { calculateCES(false); }));
-        document.getElementById('monthlyBurn').addEventListener("input", function() { calculateCES(false); }));
-        document.getElementById('audienceSize').addEventListener("input", function() { calculateCES(false); }));
-
+        document.getElementById("currentRevenue").addEventListener("input", function() { calculateCES(false); });
+        document.getElementById("lastRevenue").addEventListener("input", function() { calculateCES(false); });
+        document.getElementById("monthlyBurn").addEventListener("input", function() { calculateCES(false); });
+        document.getElementById("audienceSize").addEventListener("input", function() { calculateCES(false); });
         // Add keyboard shortcuts
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.key === 'Enter') {
