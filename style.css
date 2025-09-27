@@ -2184,3 +2184,58 @@ body {
         padding: 1.5rem !important;
     }
 }
+
+/* Force Stat Numbers to be Visible - Override All Conflicting Styles */
+.stat-card .stat-number {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
+    margin: 0 0 0.2rem 0 !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    position: relative !important;
+    z-index: 10 !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    background-clip: unset !important;
+}
+
+.stat-card .stat-label {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: 0.65rem !important;
+    color: #808080 !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+/* Remove any gradient or background effects that might be hiding text */
+.stat-card * {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    background-clip: unset !important;
+}
+
+/* Ensure the stat card content is visible */
+.stat-card {
+    position: relative !important;
+    overflow: visible !important;
+}
+
+/* Debug: Add a temporary background to see if cards are there */
+.stat-card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
