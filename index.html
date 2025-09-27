@@ -113,7 +113,7 @@
                         </div>
 
                         <div class="input-actions">
-                            <button class="calculate-btn" onclick="calculateCES()">
+                            <button class="calculate-btn" onclick="calculateCES(true)">
                                 <span class="btn-icon"></span>
                                 Calculate CES
                             </button>
@@ -301,7 +301,7 @@
         // Enhanced CES Calculator JavaScript
         let currentCES = 0;
         
-        function calculateCES() {
+        function calculateCES(showNotification = false) {
             const currentRevenue = parseFloat(document.getElementById('currentRevenue').value) || 0;
             const lastRevenue = parseFloat(document.getElementById('lastRevenue').value) || 0;
             const monthlyBurn = parseFloat(document.getElementById('monthlyBurn').value) || 0;
@@ -335,7 +335,9 @@
             updateRecommendations(currentCES);
 
             // Show success notification
-            showNotification('CES calculated successfully!', 'success');
+            if (showNotification) {
+                showNotification("CES calculated successfully!", "success");
+            }            
         }
 
         function animateValue(elementId, start, end, duration) {
@@ -477,7 +479,7 @@
             a.click();
             URL.revokeObjectURL(url);
             
-            showNotification('CES report exported successfully!', 'success');
+            
         }
 
         function showNotification(message, type = 'info') {
@@ -500,15 +502,15 @@
         }
 
         // Add event listeners for real-time calculation
-        document.getElementById('currentRevenue').addEventListener('input', calculateCES);
-        document.getElementById('lastRevenue').addEventListener('input', calculateCES);
-        document.getElementById('monthlyBurn').addEventListener('input', calculateCES);
-        document.getElementById('audienceSize').addEventListener('input', calculateCES);
+        document.getElementById('currentRevenue').addEventListener("input", function() { calculateCES(false); }));
+        document.getElementById('lastRevenue').addEventListener("input", function() { calculateCES(false); }));
+        document.getElementById('monthlyBurn').addEventListener("input", function() { calculateCES(false); }));
+        document.getElementById('audienceSize').addEventListener("input", function() { calculateCES(false); }));
 
         // Add keyboard shortcuts
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.key === 'Enter') {
-                calculateCES();
+                calculateCES(true);
             }
             if (e.ctrlKey && e.key === 'r') {
                 e.preventDefault();
