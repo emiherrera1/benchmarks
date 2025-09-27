@@ -2239,3 +2239,76 @@ body {
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
+
+/* Fix Shaking Boxes - Remove Problematic Animations */
+.stat-card {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+.stat-card:hover {
+    transform: none !important;
+    transition: none !important;
+}
+
+.input-wrapper input {
+    transition: none !important;
+    transform: none !important;
+}
+
+.input-wrapper input:focus {
+    transform: none !important;
+    transition: none !important;
+}
+
+.calculate-btn,
+.clear-btn {
+    transition: none !important;
+    transform: none !important;
+}
+
+.calculate-btn:hover,
+.clear-btn:hover {
+    transform: none !important;
+    transition: none !important;
+}
+
+/* Remove all shaking animations */
+* {
+    animation: none !important;
+}
+
+/* Keep only essential transitions for smooth updates */
+.score-circle,
+.metric-item,
+.indicator-fill {
+    transition: all 0.3s ease !important;
+}
+
+/* Disable JavaScript animations that might cause shaking */
+.animateValue {
+    animation: none !important;
+}
+
+/* Ensure smooth number updates without shaking */
+.stat-number,
+.metric-value,
+.score-number {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+}
+
+/* Fix any input field shaking */
+input[type="number"] {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+}
+
+input[type="number"]:focus {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+}
